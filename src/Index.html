@@ -1,0 +1,3163 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=0.5, maximum-scale=5.0, user-scalable=yes">
+<meta name="author" content="Débora de Souza Evangelista">
+
+<title>SETAG</title>
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Madimi+One&family=Momo+Trust+Display&display=swap" rel="stylesheet">
+
+<style>
+
+* {
+    box-sizing: border-box;
+    font-family: "Trebuchet MS", "Lucida Grande", "Lucida Sans Unicode", "Lucida Sans", Tahoma, sans-serif;
+}
+
+body {
+    margin: 0;
+    background: #f4f6f8;
+    color: #333;
+}
+
+.header {
+    background: linear-gradient(135deg, #007a4a 0%, #0f766e 55%, #1fb877 100%);
+    color: #fff;
+    padding: 14px 24px;
+    font-family: "Momo Trust Display", sans-serif;
+    font-weight: normal;
+    text-align: left;
+    box-shadow: 0 3px 12px rgba(0, 80, 50, 0.25);
+    border-bottom: 3px solid #00c27a;
+}
+.header-conteudo {
+    max-width: 1150px;
+    margin: 0 auto;
+    padding: 0 15px;
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
+}
+.header-titulo {
+    font-family: "Momo Trust Display", sans-serif;
+    font-size: 38px;
+    letter-spacing: 1px;
+    line-height: 1.2;
+}
+.header-sub {
+    font-family: "Momo Trust Display", sans-serif;
+    font-size: 14px;
+    letter-spacing: 0.5px;
+    opacity: 0.95;
+}
+
+.container {
+    max-width: 1150px;
+    margin: 20px auto;
+    padding: 0 15px;
+}
+
+.card {
+    background: #fff;
+    padding: 24px;
+    border-radius: 8px;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.08);
+}
+
+.secao-titulo {
+    font-size: 15px;
+    font-weight: bold;
+    color: #0f766e;
+    border-bottom: 2px solid #0f766e;
+    padding-bottom: 6px;
+    margin: 25px 0 15px 0;
+    text-transform: uppercase;
+}
+
+.row {
+    display: flex;
+    gap: 15px;
+    margin-bottom: 12px;
+}
+
+.col {
+    flex: 1;
+}
+
+label {
+    display: block;
+    margin-bottom: 4px;
+    font-size: 13px;
+    font-weight: bold;
+    color: #444;
+}
+
+input[type="text"],
+input[type="date"],
+select,
+textarea {
+    width: 100%;
+    padding: 8px 10px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    font-size: 13px;
+    font-family: inherit;
+}
+
+input:focus, textarea:focus, select:focus {
+    border-color: #0f766e;
+    outline: none;
+}
+
+input[type="checkbox"] {
+    transform: scale(1.25);
+    cursor: pointer;
+}
+
+.condicoes-linha {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin-bottom: 10px;
+}
+
+.condicoes-linha label {
+    margin: 0;
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    white-space: nowrap;
+    cursor: pointer;
+}
+
+.condicoes-linha input[type="text"] {
+    flex: 1;
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 10px;
+}
+
+table th, table td {
+    border: 1px solid #ddd;
+    padding: 8px;
+    font-size: 13px;
+}
+
+table th {
+    background: #f8f9fa;
+    text-align: left;
+}
+
+button {
+    background: #0f766e;
+    color: white;
+    border: none;
+    padding: 8px 16px;
+    cursor: pointer;
+    border-radius: 4px;
+    font-size: 13px;
+    font-weight: bold;
+    transition: background 0.2s;
+}
+
+button:hover { background: #007d4d; }
+
+.btn-devolver {
+    background: #0d6efd;
+    color: white;
+    padding: 9px 10px;
+    font-size: 13.5px;
+    font-weight: bold;
+}
+.btn-devolver:hover { background: #0b5ed7; }
+
+.btn-restaurar {
+    background: #198754;
+    color: white;
+    padding: 9px 10px;
+    font-size: 13.5px;
+    font-weight: bold;
+}
+.btn-restaurar:hover { background: #157347; }
+
+.btn-danger {
+    background: #dc3545;
+    padding: 5px 8px;
+    font-size: 12px;
+}
+.btn-danger:hover { background: #bd2130; }
+
+.btn-secondary, 
+#modalBtnCancelar {
+    background-color: #6c757d !important;
+    color: #ffffff !important;
+    border: none !important;
+    border-radius: 4px !important;
+    padding: 8px 18px !important;
+    font-size: 13px !important;
+    font-weight: bold !important;
+    cursor: pointer !important;
+}
+.btn-secondary:hover, 
+#modalBtnCancelar:hover { background-color: #5a6268 !important; }
+
+.btn-solid-danger {
+    background-color: #dc3545 !important;
+    color: #ffffff !important;
+    border: none !important;
+    border-radius: 4px !important;
+    padding: 8px 18px !important;
+    font-size: 13px !important;
+    font-weight: bold !important;
+    cursor: pointer !important;
+}
+.btn-solid-danger:hover { background-color: #c82333 !important; }
+
+.btn-solid-primary {
+    background-color: #0d6efd !important;
+    color: #ffffff !important;
+    border: none !important;
+    border-radius: 4px !important;
+    padding: 8px 18px !important;
+    font-size: 13px !important;
+    font-weight: bold !important;
+    cursor: pointer !important;
+}
+.btn-solid-primary:hover { background-color: #0b5ed7 !important; }
+
+.btn-solid-success {
+    background-color: #198754 !important;
+    color: #ffffff !important;
+    border: none !important;
+    border-radius: 4px !important;
+    padding: 8px 18px !important;
+    font-size: 13px !important;
+    font-weight: bold !important;
+    cursor: pointer !important;
+}
+.btn-solid-success:hover { background-color: #157347 !important; }
+
+.hidden { display: none !important; }
+
+.modal-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    background: rgba(0, 0, 0, 0.45);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 9999;
+    backdrop-filter: blur(2px);
+    overflow-y: auto;
+    padding: 10px;
+}
+
+.modal-card {
+    background: #fff;
+    padding: 20px 24px;
+    border-radius: 8px;
+    width: 96%;
+    max-width: 1050px;
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
+    text-align: center;
+}
+
+.modal-titulo {
+    margin: 0 0 10px 0;
+    font-size: 18px;
+    font-weight: bold;
+    color: #222;
+}
+
+.modal-mensagem {
+    font-size: 13px;
+    color: #555;
+    margin: 0 0 15px 0;
+    line-height: 1.4;
+}
+
+.modal-botoes {
+    display: flex;
+    justify-content: center;
+    gap: 15px;
+}
+
+#canvasAssinatura {
+    touch-action: none !important;
+    -webkit-touch-callout: none;
+    -webkit-user-select: none;
+    user-select: none;
+    cursor: crosshair;
+    display: block;
+    width: 100%;
+    height: 180px;
+    background: #ffffff;
+}
+
+.tabela-overflow {
+    width: 100%;
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+    margin-top: 10px;
+}
+
+/* ========================================================
+   MOBILE VERTICAL (RETRATO - ATÉ 768px)
+   ======================================================== */
+@media screen and (max-width: 768px) {
+    .header {
+        padding: 10px 16px;
+        text-align: center;
+    }
+    .header-conteudo { padding: 0; }
+    .header-titulo { font-size: 26px; }
+    .header-sub { font-size: 11px; letter-spacing: 0; }
+    .container {
+        margin: 10px auto;
+        padding: 0 8px;
+    }
+    .card {
+        padding: 16px 12px;
+        border-radius: 6px;
+    }
+    .row {
+        flex-direction: column;
+        gap: 10px;
+        margin-bottom: 10px;
+    }
+    .col {
+        width: 100% !important;
+        max-width: 100% !important;
+    }
+    .condicoes-linha {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 6px;
+    }
+    .condicoes-linha input[type="text"] {
+        width: 100%;
+    }
+    
+    .box-importacao-drive,
+    .box-importacao-local {
+        flex-direction: column !important;
+        align-items: stretch !important;
+    }
+    .box-importacao-drive input,
+    .box-importacao-drive button,
+    .box-importacao-local input,
+    .box-importacao-local button {
+        width: 100% !important;
+        max-width: 100% !important;
+    }
+
+    .tabela-overflow table {
+        min-width: 620px;
+    }
+
+    .botoes-tabela-linha {
+        flex-direction: column;
+        gap: 8px;
+    }
+    .botoes-tabela-linha button {
+        width: 100% !important;
+    }
+
+    .botoes-preview {
+        flex-wrap: wrap !important;
+        gap: 8px !important;
+    }
+    .botoes-preview button {
+        flex: 1 1 30% !important;
+        min-width: 85px !important;
+        font-size: 12px !important;
+        padding: 0 8px !important;
+        height: 36px !important;
+    }
+
+    .a4 {
+        width: 100% !important;
+        min-height: auto !important;
+        margin: 10px auto !important;
+        padding: 12px 8px !important;
+        overflow-x: auto;
+        box-shadow: 0 2px 8px rgba(0,0,0,0.12) !important;
+    }
+    .a4 .tabela-mestra {
+        min-width: 580px;
+    }
+
+    .modal-card {
+        padding: 16px 12px !important;
+        max-height: 94vh;
+        overflow-y: auto;
+    }
+    .modal-titulo {
+        font-size: 16px !important;
+    }
+    #canvasAssinatura {
+        height: 160px !important;
+    }
+    .botoes-modal-rodape {
+        flex-direction: column-reverse !important;
+        gap: 8px !important;
+    }
+    .botoes-modal-rodape > div,
+    .botoes-modal-rodape button {
+        width: 100% !important;
+    }
+}
+
+/* ========================================================
+   MOBILE HORIZONTAL (PAISAGEM - ALTURA ATÉ 560px)
+   ======================================================== */
+@media screen and (orientation: landscape) and (max-height: 560px) {
+    .header {
+        padding: 6px 18px !important;
+    }
+    .header-titulo { font-size: 20px !important; }
+    .header-sub { display: none !important; }
+    .container {
+        margin: 6px auto !important;
+        padding: 0 10px !important;
+    }
+    .card {
+        padding: 12px 16px !important;
+    }
+    .secao-titulo {
+        margin: 14px 0 8px 0 !important;
+        font-size: 13px !important;
+    }
+    .row {
+        flex-direction: row !important;
+        gap: 12px !important;
+        margin-bottom: 8px !important;
+    }
+    
+    .box-importacao-drive,
+    .box-importacao-local {
+        flex-direction: row !important;
+    }
+    .box-importacao-drive input,
+    .box-importacao-local input {
+        max-width: 320px !important;
+    }
+
+    .modal-overlay {
+        padding: 4px !important;
+    }
+    .modal-card {
+        padding: 8px 16px !important;
+        max-width: 820px !important;
+        max-height: 98vh !important;
+    }
+    .modal-titulo {
+        font-size: 14.5px !important;
+        margin: 0 0 3px 0 !important;
+    }
+    .modal-mensagem {
+        font-size: 11px !important;
+        margin: 0 0 5px 0 !important;
+    }
+    #boxSelecaoDestinoAssinatura {
+        margin: 3px 0 6px 0 !important;
+        padding: 4px 10px !important;
+    }
+    #canvasAssinatura {
+        height: 120px !important;
+    }
+    .botoes-modal-rodape {
+        flex-direction: row !important;
+        justify-content: space-between !important;
+        gap: 10px !important;
+        margin-top: 4px !important;
+    }
+    .botoes-modal-rodape > div {
+        display: flex;
+        gap: 8px;
+    }
+    .botoes-modal-rodape button {
+        width: auto !important;
+        padding: 5px 14px !important;
+        font-size: 11.5px !important;
+        height: 32px !important;
+    }
+
+    .a4 {
+        margin: 10px auto !important;
+        padding: 8mm 12mm !important;
+        overflow-x: auto !important;
+    }
+}
+
+/* ========================================================
+   ESTILOS DE PRÉ-VISUALIZAÇÃO DO DOCUMENTO
+   ======================================================== */
+.a4 {
+    width: 210mm;
+    min-height: 297mm;
+    background: white;
+    margin: 25px auto;
+    padding: 10mm 15mm;
+    box-shadow: 0 4px 14px rgba(0,0,0,0.18);
+    box-sizing: border-box;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    position: relative;
+}
+
+.tabela-mestra {
+    width: 100%;
+    border-collapse: collapse;
+    border: none !important;
+    margin: 0;
+    padding: 0;
+    flex: 1;
+}
+
+.tabela-mestra > thead > tr > td,
+.tabela-mestra > tfoot > tr > td,
+.tabela-mestra > tbody > tr > td {
+    border: none !important;
+    padding: 0 !important;
+    background: transparent !important;
+}
+
+.termo-header-logo {
+    text-align: right;
+    margin-bottom: 4px;
+}
+
+.termo-titulo {
+    font-size: 16px;
+    font-weight: bold;
+    color: #000;
+    margin-bottom: 2px;
+    line-height: 1.2;
+}
+
+.termo-secao {
+    font-size: 12px;
+    font-weight: bold;
+    color: #000;
+    margin-top: 14px;
+    margin-bottom: 8px;
+    padding: 0;
+    background: transparent;
+    border: none;
+    break-after: avoid !important;
+    page-break-after: avoid !important;
+}
+
+.termo-secao-condicoes {
+    font-size: 12px;
+    font-weight: bold;
+    color: #000;
+    margin-top: 14px;
+    margin-bottom: 6px;
+    padding-bottom: 2px;
+    border-bottom: 1.5px solid #888;
+}
+
+.termo-tabela {
+    width: 100%;
+    border-collapse: collapse;
+    margin-bottom: 2px;
+    border-top: 2px solid #000;
+    border-bottom: 2px solid #000;
+    border-left: none;
+    border-right: none;
+}
+
+.termo-tabela td,
+.termo-tabela th {
+    border-top: 1px solid #000;
+    border-bottom: 1px solid #000;
+    border-left: 1px solid #000;
+    border-right: 1px solid #000;
+    padding: 4px 6px;
+    font-size: 12px;
+    line-height: 1.35;
+    vertical-align: top;
+    background: transparent;
+}
+
+.termo-tabela tr td:first-child,
+.termo-tabela tr th:first-child {
+    border-left: none !important;
+}
+
+.termo-tabela tr td:last-child,
+.termo-tabela tr th:last-child {
+    border-right: none !important;
+}
+
+.termo-tabela th {
+    font-weight: bold;
+    text-align: center;
+    border-bottom: 2px solid #000;
+}
+
+.termo-condicoes {
+    border: none;
+    padding: 0;
+    font-size: 11.5px;
+    line-height: 1.36;
+}
+
+.termo-condicoes p {
+    margin: 4px 0;
+}
+
+.termo-check {
+    font-size: 15px;
+    display: inline-block;
+    vertical-align: -1px;
+    line-height: 1;
+    margin-right: 2px;
+}
+
+.termo-rodape-info {
+    border-top: 2px solid #000;
+    padding-top: 4px;
+    padding-bottom: 2px;
+    display: flex;
+    justify-content: flex-start;
+    font-size: 10px;
+    width: 100%;
+    margin-top: auto;
+}
+
+/* ========================================================
+   REGRAS DE IMPRESSÃO
+   ======================================================== */
+@media print {
+    @page {
+        size: A4 portrait;
+        margin: 10mm 15mm;
+    }
+    body { 
+        background: white; 
+        margin: 0; 
+    }
+    .no-print { 
+        display: none !important; 
+    }
+    .container { 
+        margin: 0; 
+        padding: 0; 
+        max-width: 100%; 
+        width: 100%; 
+    }
+    .a4 { 
+        margin: 0 !important; 
+        padding: 0 !important; 
+        box-shadow: none !important; 
+        width: 100% !important; 
+        min-height: auto !important; 
+        display: block !important; 
+    }
+
+    thead {
+        display: table-header-group;
+    }
+    tfoot {
+        display: table-footer-group;
+    }
+
+    .termo-rodape-info {
+        position: fixed !important;
+        bottom: 0 !important;
+        left: 0 !important;
+        right: 0 !important;
+        width: 100% !important;
+        border-top: 2px solid #000 !important;
+        padding-top: 3px !important;
+        font-size: 10px !important;
+        background: white !important;
+        display: flex !important;
+        justify-content: flex-start !important;
+        z-index: 9999 !important;
+    }
+
+    tfoot tr td {
+        height: 25px !important;
+        border: none !important;
+        padding: 0 !important;
+    }
+
+    .termo-tabela tr {
+        break-inside: avoid !important;
+        page-break-inside: avoid !important;
+    }
+
+    .termo-condicoes {
+        break-inside: avoid !important;
+        page-break-inside: avoid !important;
+    }
+}
+
+.btn-lg,
+.btn-secondary.btn-lg {
+    font-size: 13.5px !important;
+    padding: 0 18px !important;
+    height: 38px !important;
+    font-weight: bold !important;
+    border-radius: 4px !important;
+    display: inline-flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    cursor: pointer !important;
+}
+
+.campo-erro {
+    border-color: #dc3545 !important;
+    box-shadow: 0 0 0 3.5px rgba(220, 53, 69, 0.25) !important;
+}
+
+.condicao-erro {
+    background-color: #fff5f5;
+    border: 1px solid #dc3545 !important;
+    border-radius: 4px;
+    padding: 6px 10px !important;
+    box-shadow: 0 0 0 3.5px rgba(220, 53, 69, 0.25) !important;
+}
+
+.app-footer {
+    text-align: center;
+    padding: 30px 15px 40px 15px;
+    color: #666;
+    font-size: 11.5px;
+    line-height: 1.6;
+    border-top: 1px solid #e2e8f0;
+    margin-top: 40px;
+}
+
+.app-footer strong {
+    color: #222;
+    font-size: 12.5px;
+}
+
+.app-footer .badge-versao {
+    display: inline-block;
+    background: #e6f4f1;
+    color: #0f766e;
+    font-weight: bold;
+    font-size: 11px;
+    padding: 2px 8px;
+    border-radius: 12px;
+    margin: 4px 0;
+}
+
+</style>
+</head>
+
+<body>
+
+<div class="header no-print">
+    <div class="header-conteudo">
+        <div class="header-titulo">SETAG</div>
+        <div class="header-sub">Sistema Emissor de Termos de Ativos sob Guarda</div>
+    </div>
+</div>
+
+<div class="container">
+
+    <!-- FORMULÁRIO PRINCIPAL -->
+    <div id="formulario" class="card">
+
+        <!-- IMPORTAÇÃO HÍBRIDA -->
+        <div class="secao-titulo" style="margin-top: 0;">Importar Termo Existente</div>
+
+        <div style="background: #f8fafc; border: 1px solid #e2e8f0; border-radius: 6px; padding: 15px; margin-bottom: 20px;">
+            <label style="color: #0f766e; font-weight: bold; margin-bottom: 6px;">
+                🔍 Buscar Termo no Google Drive (Nome do Colaborador ou Funcional)
+            </label>
+            <div style="display: flex; gap: 10px; margin-bottom: 8px;" class="box-importacao-drive">
+                <input type="text" id="termoBuscaDrive" placeholder="Ex: Maria Silva ou A12345..." onkeydown="if(event.key==='Enter') buscarTermosNoDrive()">
+                <button type="button" class="btn-lg" onclick="buscarTermosNoDrive()" style="white-space: nowrap;">Buscar no Drive</button>
+            </div>
+
+            <div id="listaResultadosDrive" style="display: none; margin-top: 10px; max-height: 180px; overflow-y: auto; border: 1px solid #cbd5e1; border-radius: 4px; background: white;"></div>
+
+            <div style="margin: 12px 0 8px 0; display: flex; align-items: center; gap: 10px;">
+                <span style="flex: 1; height: 1px; background: #e2e8f0;"></span>
+                <span style="font-size: 11px; color: #888; text-transform: uppercase;">ou envie do computador (PDF ou Word)</span>
+                <span style="flex: 1; height: 1px; background: #e2e8f0;"></span>
+            </div>
+
+            <div class="box-importacao-local">
+                <!-- Ao escolher o ficheiro, aciona o clique no botão invisível -->
+                <input type="file" id="pdfFile" accept=".pdf,.docx" onchange="document.getElementById('btnImportarPDF').click()">
+
+                <!-- Botão invisível que executa a função exatamente como antes -->
+                <button type="button" id="btnImportarPDF" style="display: none;" onclick="importarPDF()"></button>
+            </div>
+        </div>
+
+        <div id="statusImportacao" style="font-size: 13px; font-weight: bold; color: #0f766e; margin: -10px 0 15px 0;"></div>
+
+        <!-- DADOS DO COLABORADOR -->
+        <div class="secao-titulo">Dados da Empresa / Colaborador / Ativo / Departamento</div>
+        
+        <div class="row">
+            <div class="col" style="flex: 2;">
+                <label>Nome do Colaborador (Responsável pelo Ativo)</label>
+                <input type="text" id="nome">
+            </div>
+            <div class="col" style="flex: 1;">
+                <label>Funcional</label>
+                <input type="text" id="funcional">
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col">
+                <label>Área</label>
+                <input type="text" id="area">
+            </div>
+            <div class="col">
+                <label>Cargo</label>
+                <input type="text" id="cargo">
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col">
+                <label>Localidade</label>
+                <input type="text" id="localidade">
+            </div>
+            <div class="col">
+                <label>Setor</label>
+                <input type="text" id="setor">
+            </div>
+            <div class="col">
+                <label>Centro de Custo</label>
+                <input type="text" id="cc">
+            </div>
+        </div>
+
+        <!-- DADOS DO PATRIMÔNIO (RETIRADA) -->
+        <div class="secao-titulo">Dados do Patrimônio Colaborador / Departamental</div>
+        
+        <div class="tabela-overflow">
+            <table>
+                <thead>
+                    <tr>
+                        <th style="width: 12%;">Tipo</th>
+                        <th style="width: 22%;">N° Patrimônio/Série</th>
+                        <th style="width: 42%;">Descrição Complementar</th>
+                        <th style="width: 14%;">Data de Entrega</th>
+                        <th style="width: 10%; text-align: center;">Ações</th>
+                    </tr>
+                </thead>
+                <tbody id="ativos"></tbody>
+            </table>
+        </div>
+
+        <div style="margin-top: 10px; display: flex; justify-content: space-between; align-items: center;" class="botoes-tabela-linha">
+            <button type="button" class="btn-lg" onclick="adicionarAtivo()">+ Adicionar Ativo (Retirada)</button>
+            <button type="button" class="btn-solid-primary btn-lg" onclick="confirmarDevolverTodos()">Devolver Todos</button>
+        </div>
+
+        <!-- CONDIÇÕES E DATA DA RETIRADA -->
+        <div class="secao-titulo">Retirada - Condições de Uso na Retirada</div>
+        <div class="condicoes-linha">
+            <label>
+                <input type="checkbox" id="uso">
+                Em perfeitas condições de uso
+            </label>
+        </div>
+        <div class="condicoes-linha">
+            <label>
+                <input type="checkbox" id="problemas">
+                Com os seguintes problemas:
+            </label>
+            <input type="text" id="descricaoProblemas" placeholder="Descreva os problemas encontrados...">
+        </div>
+
+        <div class="row" style="margin-top: 15px;">
+            <div class="col" style="max-width: 250px;">
+                <label>Data da Retirada</label>
+                <input type="date" id="retirada">
+            </div>
+        </div>
+
+        <hr style="margin: 30px 0; border: 0; border-top: 2px dashed #0f766e;">
+
+        <!-- DEVOLUÇÃO - ITENS DEVOLVIDOS -->
+        <div class="secao-titulo" style="color: #0d6efd; border-color: #0d6efd;">Devolução – Itens Devolvidos</div>
+        
+        <div class="tabela-overflow">
+            <table>
+                <thead>
+                    <tr>
+                        <th style="width: 12%;">Tipo</th>
+                        <th style="width: 22%;">N° Patrimônio/Série</th>
+                        <th style="width: 42%;">Descrição Complementar</th>
+                        <th style="width: 14%;">Data de Devolução</th>
+                        <th style="width: 10%; text-align: center;">Ações</th>
+                    </tr>
+                </thead>
+                <tbody id="ativosDevolvidos"></tbody>
+            </table>
+        </div>
+
+        <div style="margin-top: 10px; display: flex; justify-content: space-between; align-items: center;" class="botoes-tabela-linha">
+            <button type="button" class="btn-lg" onclick="adicionarAtivoDevolvido()" style="background: #0d6efd;">+ Adicionar Ativo (Devolução)</button>
+            <button type="button" class="btn-solid-success btn-lg" onclick="confirmarRestaurarTodos()">Restaurar Todos</button>
+        </div>
+
+        <!-- CONDIÇÕES E DATA DA DEVOLUÇÃO -->
+        <div class="secao-titulo" style="color: #0d6efd; border-color: #0d6efd;">
+            Devolução - Condições de Uso na Devolução
+        </div>
+        <div class="condicoes-linha">
+            <label>
+                <input type="checkbox" id="usoDevolucao">
+                Em perfeitas condições de uso
+            </label>
+        </div>
+        <div class="condicoes-linha">
+            <label>
+                <input type="checkbox" id="problemasDevolucao">
+                Com os seguintes problemas:
+            </label>
+            <input type="text" id="descricaoProblemasDevolucao" placeholder="Descreva os problemas na devolução...">
+        </div>
+
+        <div class="row" style="margin-top: 15px;">
+            <div class="col" style="max-width: 250px;">
+                <label>Data da Devolução</label>
+                <input type="date" id="dataDevolucaoGeral">
+            </div>
+        </div>
+
+        <div style="margin-top: 40px; text-align: right; border-top: 1px solid #ccc; padding-top: 20px;">
+            <button type="button" class="btn-lg" onclick="gerarPreview()">
+                Visualizar PDF
+            </button>
+        </div>
+
+    </div>
+
+    <!-- ÁREA DE PRÉ-VISUALIZAÇÃO DO TERMO -->
+    <div id="previewArea" class="hidden">
+        
+        <div class="no-print botoes-preview" style="margin: 20px auto 15px auto; display: flex; justify-content: center; gap: 15px;">
+            <button type="button" class="btn-secondary btn-lg" onclick="voltar()">← Voltar</button>
+            <button type="button" class="btn-solid-primary btn-lg" onclick="abrirModalAssinatura()">Assinar</button>
+            <button type="button" class="btn-lg" onclick="baixarPDF()">Salvar PDF</button>
+        </div>
+
+        <div id="previewConteudo"></div>
+
+        <div class="no-print" style="margin: 25px auto 40px auto; display: flex; justify-content: center; gap: 15px;">
+            <button type="button" class="btn-secondary btn-lg" onclick="voltar()">← Voltar</button>
+            <button type="button" class="btn-solid-primary btn-lg" onclick="abrirModalAssinatura()">Assinar</button>
+            <button type="button" class="btn-lg" onclick="baixarPDF()">Salvar PDF</button>
+        </div>
+
+    </div>
+
+</div>
+
+<!-- MODAL DE CONFIRMAÇÃO -->
+<div id="modalConfirmacao" class="modal-overlay hidden">
+    <div class="modal-card">
+        <div id="modalTitulo" class="modal-titulo">Confirmação</div>
+        <div id="modalMensagem" class="modal-mensagem">Deseja continuar?</div>
+        <div class="modal-botoes">
+            <button type="button" class="btn-secondary" id="modalBtnCancelar">Cancelar</button>
+            <button type="button" id="modalBtnConfirmar">Confirmar</button>
+        </div>
+    </div>
+</div>
+
+<!-- MODAL DE ASSINATURA ELETRÔNICA (PANORÂMICO E TOUCH FRIENDLY) -->
+<div id="modalAssinatura" class="modal-overlay hidden">
+    <div class="modal-card">
+        <div class="modal-titulo">Assinatura Eletrônica do Colaborador</div>
+
+        <div class="modal-mensagem">
+            Escreva o seu nome e sobrenome no quadro abaixo usando o mouse ou o dedo:
+        </div>
+        
+        <div style="border: 2px dashed #0f766e; border-radius: 8px; background: #fff; margin-bottom: 14px; position: relative; overflow: hidden;">
+            <canvas id="canvasAssinatura" width="2200" height="500"></canvas>
+            <div style="position: absolute; bottom: 14px; left: 0; right: 0; font-size: 11.5px; color: #aaa; pointer-events: none; border-top: 1px solid #eee; margin: 0 35px; padding-top: 3px;">
+                Linha de Assinatura (Nome e Sobrenome)
+            </div>
+        </div>
+
+        <div id="boxSelecaoDestinoAssinatura" style="margin: 10px 0 14px 0; background: #f8fafc; padding: 10px 14px; border-radius: 6px; border: 1px solid #e2e8f0; transition: border-color 0.2s, box-shadow 0.2s;">
+            <div style="font-size: 12.5px; font-weight: bold; color: #444; margin-bottom: 6px;">
+                Onde deseja aplicar a assinatura?
+            </div>
+            <div style="display: flex; justify-content: center; gap: 30px; font-size: 13.5px;">
+                <label style="cursor: pointer; display: flex; align-items: center; gap: 8px; margin: 0;">
+                    <input type="checkbox" id="checkAssinarRetirada"> Retirada
+                </label>
+                <label style="cursor: pointer; display: flex; align-items: center; gap: 8px; margin: 0;">
+                    <input type="checkbox" id="checkAssinarDevolucao"> Devolução
+                </label>
+            </div>
+        </div>
+        
+        <div style="display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 10px;" class="botoes-modal-rodape">
+            <button type="button" class="btn-secondary" onclick="limparCanvasAssinatura()" style="padding: 9px 18px !important; font-size: 13px !important;">
+                Limpar
+            </button>
+            <div style="display: flex; gap: 10px;">
+                <button type="button" class="btn-secondary" onclick="fecharModalAssinatura()" style="padding: 9px 18px !important; font-size: 13px !important;">Cancelar</button>
+                <button type="button" class="btn-solid-success" onclick="confirmarAssinatura()" style="padding: 9px 24px !important; font-size: 13px !important;">Confirmar Assinatura</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- RODAPÉ DO SISTEMA -->
+<footer class="app-footer no-print">
+    <div>
+        <strong>SETAG - Sistema Emissor de Termos de Ativos sob Guarda</strong> • Ferramenta de uso interno para apoio à atualização e emissão de termos de responsabilidade e guarda de ativos patrimoniais.
+    </div>
+    <div>
+        <span class="badge-versao">Versão 1.0.0 • 2026</span> • Desenvolvido por: Débora de Souza Evangelista
+    </div>
+</footer>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/pdf.js/3.11.174/pdf.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jszip/3.10.1/jszip.min.js"></script>
+
+<script>
+    // =====================================================================
+    // CONFIGURAÇÃO — ajuste aqui os dados da sua empresa
+    // =====================================================================
+    const CONFIG = {
+        empresa: {
+            nome: "EMPRESA EXEMPLO LTDA",
+            cnpj: "00.000.000/0001-00",
+            endereco: "Rua Exemplo, 100",
+            cep: "00000-000",
+            cidade: "São Paulo",
+            uf: "SP"
+        },
+        logoUrl: "",                         // URL da logo no cabeçalho do termo (vazio = mostra o nome da empresa)
+        rotuloPatrimonioProprio: "EMPRESA",  // como o patrimônio próprio aparece no termo (o outro tipo é LOCADO)
+        contatoDevolucao: "(00) 00000-0000", // contato para devolução de equipamentos
+        codigoFormulario: "FR-0000-R00",     // código de controle do formulário (rodapé)
+        iconeUrl: "https://raw.githubusercontent.com/dehsouzasou/setag/main/docs/icone.png"
+    };
+    const escRe = (s) => String(s).replace(/[.*+?^${}()|[\]\\]/g, "\\$&");
+    const RE_PROPRIO = new RegExp(escRe(CONFIG.rotuloPatrimonioProprio), "i");
+    const RE_TIPO = new RegExp(escRe(CONFIG.rotuloPatrimonioProprio) + "|LOCADO", "i");
+    const RE_PROPRIO_MARCADO = new RegExp("[☒☑]\\s*" + escRe(CONFIG.rotuloPatrimonioProprio), "i");
+
+    pdfjsLib.GlobalWorkerOptions.workerSrc = "https://cdnjs.cloudflare.com/ajax/libs/pdf.js/3.11.174/pdf.worker.min.js";
+
+    document.addEventListener("DOMContentLoaded", () => {
+        const tbodyAtivos = document.getElementById("ativos");
+        if (tbodyAtivos) tbodyAtivos.innerHTML = "";
+
+        const tbodyDevolvidos = document.getElementById("ativosDevolvidos");
+        if (tbodyDevolvidos) tbodyDevolvidos.innerHTML = "";
+
+        const retiradaEl = document.getElementById("retirada");
+        if (retiradaEl) retiradaEl.value = "";
+
+        const devolucaoEl = document.getElementById("dataDevolucaoGeral");
+        if (devolucaoEl) devolucaoEl.value = "";
+
+        configurarCheckboxesCondicoes();
+
+        document.addEventListener("input", (e) => {
+            if (e.target && e.target.type === "date" && e.target.value.trim()) {
+                e.target.classList.remove("campo-erro");
+            }
+        });
+        document.addEventListener("change", (e) => {
+            if (e.target && e.target.type === "date" && e.target.value.trim()) {
+                e.target.classList.remove("campo-erro");
+            }
+        });
+    });
+    
+    function obterDataHojeBrasilia() {
+        return new Date().toLocaleDateString('en-CA', { timeZone: 'America/Sao_Paulo' });
+    }
+
+    function verificarSeTabelaTemItens(tbodyId) {
+        const tbody = document.getElementById(tbodyId);
+        if (!tbody) return false;
+        const linhas = tbody.querySelectorAll("tr");
+        if (linhas.length === 0) return false;
+
+        for (let linha of linhas) {
+            const pat = linha.querySelector(".patrimonio-ativo")?.value?.trim() || "";
+            const desc = linha.querySelector(".descricao-ativo")?.value?.trim() || "";
+            if (pat !== "" || desc !== "") {
+                return true;
+            }
+        }
+        return false;
+    }
+
+    function atualizarEstadoSecoesVazias() {
+        if (!verificarSeTabelaTemItens("ativos")) {
+            const retEl = document.getElementById("retirada");
+            if (retEl) {
+                retEl.value = "";
+                retEl.classList.remove("campo-erro");
+            }
+            const uso = document.getElementById("uso");
+            if (uso) uso.checked = false;
+            
+            const problemas = document.getElementById("problemas");
+            if (problemas) problemas.checked = false;
+
+            const descProb = document.getElementById("descricaoProblemas");
+            if (descProb) {
+                descProb.value = "";
+                descProb.classList.remove("campo-erro");
+            }
+
+            document.getElementById("uso")?.closest(".condicoes-linha")?.classList.remove("condicao-erro");
+            document.getElementById("problemas")?.closest(".condicoes-linha")?.classList.remove("condicao-erro");
+        }
+
+        if (!verificarSeTabelaTemItens("ativosDevolvidos")) {
+            const devEl = document.getElementById("dataDevolucaoGeral");
+            if (devEl) {
+                devEl.value = "";
+                devEl.classList.remove("campo-erro");
+            }
+            const usoDev = document.getElementById("usoDevolucao");
+            if (usoDev) usoDev.checked = false;
+
+            const problemasDev = document.getElementById("problemasDevolucao");
+            if (problemasDev) problemasDev.checked = false;
+
+            const descProbDev = document.getElementById("descricaoProblemasDevolucao");
+            if (descProbDev) {
+                descProbDev.value = "";
+                descProbDev.classList.remove("campo-erro");
+            }
+
+            document.getElementById("usoDevolucao")?.closest(".condicoes-linha")?.classList.remove("condicao-erro");
+            document.getElementById("problemasDevolucao")?.closest(".condicoes-linha")?.classList.remove("condicao-erro");
+        }
+    }
+
+    function configurarCheckboxesCondicoes() {
+        const uso = document.getElementById("uso");
+        const problemas = document.getElementById("problemas");
+        const descProb = document.getElementById("descricaoProblemas");
+
+        const usoDevolucao = document.getElementById("usoDevolucao");
+        const problemasDevolucao = document.getElementById("problemasDevolucao");
+        const descProbDev = document.getElementById("descricaoProblemasDevolucao");
+
+        const limparErrosGrupo = (idUso, idProb, inputTexto) => {
+            document.getElementById(idUso)?.closest(".condicoes-linha")?.classList.remove("condicao-erro");
+            document.getElementById(idProb)?.closest(".condicoes-linha")?.classList.remove("condicao-erro");
+            inputTexto?.classList.remove("campo-erro");
+        };
+
+        if (uso && problemas) {
+            uso.addEventListener("change", () => {
+                if (uso.checked) {
+                    problemas.checked = false;
+                    limparErrosGrupo("uso", "problemas", descProb);
+                }
+            });
+
+            problemas.addEventListener("change", () => {
+                if (problemas.checked) {
+                    uso.checked = false;
+                } else {
+                    descProb?.classList.remove("campo-erro");
+                }
+                limparErrosGrupo("uso", "problemas");
+            });
+        }
+
+        if (usoDevolucao && problemasDevolucao) {
+            usoDevolucao.addEventListener("change", () => {
+                if (usoDevolucao.checked) {
+                    problemasDevolucao.checked = false;
+                    limparErrosGrupo("usoDevolucao", "problemasDevolucao", descProbDev);
+                }
+            });
+
+            problemasDevolucao.addEventListener("change", () => {
+                if (problemasDevolucao.checked) {
+                    usoDevolucao.checked = false;
+                } else {
+                    descProbDev?.classList.remove("campo-erro");
+                }
+                limparErrosGrupo("usoDevolucao", "problemasDevolucao");
+            });
+        }
+
+        // Ao digitar nos problemas, a caixa "Com os seguintes problemas" é marcada sozinha
+        // (e "Em perfeitas condições de uso" é desmarcada).
+        if (descProb) {
+            descProb.addEventListener("input", () => {
+                if (descProb.value.trim()) {
+                    if (problemas) problemas.checked = true;
+                    if (uso) uso.checked = false;
+                    limparErrosGrupo("uso", "problemas", descProb);
+                }
+            });
+        }
+
+        if (descProbDev) {
+            descProbDev.addEventListener("input", () => {
+                if (descProbDev.value.trim()) {
+                    if (problemasDevolucao) problemasDevolucao.checked = true;
+                    if (usoDevolucao) usoDevolucao.checked = false;
+                    limparErrosGrupo("usoDevolucao", "problemasDevolucao", descProbDev);
+                }
+            });
+        }
+    }
+
+    // Os textos de patrimônio/descrição são gravados via .value (nunca dentro do innerHTML),
+    // para que <, & e quebras de linha iniciais não corrompam os campos.
+    function adicionarAtivo(dados = {}) {
+        const tbody = document.getElementById("ativos");
+        if (!tbody) return;
+
+        const retiradaEl = document.getElementById("retirada");
+        if (retiradaEl && !retiradaEl.value) {
+            retiradaEl.value = obterDataHojeBrasilia();
+        }
+
+        const tr = document.createElement("tr");
+        tr.innerHTML = `
+            <td>
+                <select class="tipo-ativo">
+                    <option value="LOCADO" ${dados.tipo === "LOCADO" ? "selected" : ""}>LOCADO</option>
+                    <option value="PROPRIO" ${dados.tipo === "PROPRIO" ? "selected" : ""}>${CONFIG.rotuloPatrimonioProprio}</option>
+                </select>
+            </td>
+            <td>
+                <textarea class="patrimonio-ativo" rows="4" style="resize:vertical;"></textarea>
+            </td>
+            <td>
+                <textarea class="descricao-ativo" rows="4" style="resize:vertical;"></textarea>
+            </td>
+            <td>
+                <input type="date" class="data-ativo" value="${Object.prototype.hasOwnProperty.call(dados, 'dataEntrega') ? (dados.dataEntrega || '') : obterDataHojeBrasilia()}">
+            </td>
+            <td style="vertical-align: middle;">
+                <div style="display: flex; flex-direction: column; gap: 6px; align-items: center;">
+                    <button type="button" class="btn-devolver" onclick="confirmarDevolucao(this)" style="width: 100%; margin: 0;" title="Marcar como Devolvido">
+                        Devolvido
+                    </button>
+                    <!-- Botão Excluir desativado temporariamente (remova display:none para reativar) -->
+                    <button type="button" class="btn-danger" onclick="confirmarExclusao(this)" style="display: none; width: 100%; margin: 0;" title="Excluir Ativo">
+                        Excluir
+                    </button>
+                </div>
+            </td>
+        `;
+        tr.querySelector(".patrimonio-ativo").value = dados.patrimonio || "";
+        tr.querySelector(".descricao-ativo").value = dados.descricao || "";
+        tbody.appendChild(tr);
+    }
+
+    function adicionarAtivoDevolvido(dados = {}) {
+        const tbody = document.getElementById("ativosDevolvidos");
+        if (!tbody) return;
+
+        const hoje = obterDataHojeBrasilia();
+        const dataDevolucaoPadrao = Object.prototype.hasOwnProperty.call(dados, 'dataDevolucao') ? (dados.dataDevolucao || '') : hoje;
+
+        const devolucaoEl = document.getElementById("dataDevolucaoGeral");
+        if (devolucaoEl && !devolucaoEl.value) {
+            devolucaoEl.value = hoje;
+        }
+
+        const tr = document.createElement("tr");
+        tr.innerHTML = `
+            <td>
+                <select class="tipo-ativo">
+                    <option value="LOCADO" ${dados.tipo === "LOCADO" ? "selected" : ""}>LOCADO</option>
+                    <option value="PROPRIO" ${dados.tipo === "PROPRIO" ? "selected" : ""}>${CONFIG.rotuloPatrimonioProprio}</option>
+                </select>
+            </td>
+            <td>
+                <textarea class="patrimonio-ativo" rows="4" style="resize:vertical;"></textarea>
+            </td>
+            <td>
+                <textarea class="descricao-ativo" rows="4" style="resize:vertical;"></textarea>
+            </td>
+            <td>
+                <input type="date" class="data-ativo" value="${dataDevolucaoPadrao}">
+            </td>
+            <td style="vertical-align: middle;">
+                <div style="display: flex; flex-direction: column; gap: 6px; align-items: center;">
+                    <button type="button" class="btn-restaurar" onclick="confirmarRestaurar(this)" style="width: 100%; margin: 0;" title="Restaurar ativo para a Retirada">
+                        Restaurar
+                    </button>
+                    <!-- Botão Excluir desativado temporariamente (remova display:none para reativar) -->
+                    <button type="button" class="btn-danger" onclick="confirmarExclusao(this)" style="display: none; width: 100%; margin: 0;" title="Excluir Ativo">
+                        Excluir
+                    </button>
+                </div>
+            </td>
+        `;
+        tr.querySelector(".patrimonio-ativo").value = dados.patrimonio || "";
+        tr.querySelector(".descricao-ativo").value = dados.descricao || "";
+        tbody.appendChild(tr);
+    }
+
+    function abrirModalConfirmacao({ titulo, mensagem, textoConfirmar, classeBotaoConfirmar, apenasAlerta = false }) {
+        return new Promise((resolve) => {
+            const modal = document.getElementById("modalConfirmacao");
+            const tituloEl = document.getElementById("modalTitulo");
+            const msgEl = document.getElementById("modalMensagem");
+            const btnConfirmar = document.getElementById("modalBtnConfirmar");
+            const btnCancelar = document.getElementById("modalBtnCancelar");
+
+            if (!modal || !tituloEl || !msgEl || !btnConfirmar) {
+                alert(mensagem);
+                resolve(true);
+                return;
+            }
+
+            tituloEl.innerText = titulo;
+            msgEl.innerText = mensagem;
+            
+            btnConfirmar.innerText = textoConfirmar;
+            btnConfirmar.className = "";
+            btnConfirmar.classList.add(classeBotaoConfirmar);
+
+            if (apenasAlerta) {
+                if (btnCancelar) btnCancelar.classList.add("hidden");
+            } else {
+                if (btnCancelar) btnCancelar.classList.remove("hidden");
+            }
+
+            modal.classList.remove("hidden");
+
+            const fecharModal = (confirmou) => {
+                modal.classList.add("hidden");
+                btnConfirmar.onclick = null;
+                if (btnCancelar) btnCancelar.onclick = null;
+                resolve(confirmou);
+            };
+
+            btnConfirmar.onclick = () => fecharModal(true);
+            if (btnCancelar) btnCancelar.onclick = () => fecharModal(false);
+        });
+    }
+
+    function mostrarAlerta(titulo, mensagem) {
+        return abrirModalConfirmacao({
+            titulo: titulo,
+            mensagem: mensagem,
+            textoConfirmar: "OK",
+            classeBotaoConfirmar: "btn-solid-success",
+            apenasAlerta: true
+        });
+    }
+
+    async function confirmarExclusao(botao) {
+        const confirmou = await abrirModalConfirmacao({
+            titulo: "Excluir Ativo",
+            mensagem: "Tem certeza de que deseja remover este ativo da lista?",
+            textoConfirmar: "Sim, Excluir",
+            classeBotaoConfirmar: "btn-solid-danger"
+        });
+
+        if (confirmou) {
+            botao.closest("tr").remove();
+            atualizarEstadoSecoesVazias();
+        }
+    }
+
+    async function confirmarDevolucao(botao) {
+        const confirmou = await abrirModalConfirmacao({
+            titulo: "Marcar Devolução",
+            mensagem: "Deseja mover este ativo para Devolução?",
+            textoConfirmar: "Confirmar Devolução",
+            classeBotaoConfirmar: "btn-solid-primary"
+        });
+
+        if (confirmou) {
+            const tr = botao.closest("tr");
+            const tipo = tr.querySelector(".tipo-ativo") ? tr.querySelector(".tipo-ativo").value : "LOCADO";
+            const patrimonio = tr.querySelector(".patrimonio-ativo") ? tr.querySelector(".patrimonio-ativo").value : "";
+            const descricao = tr.querySelector(".descricao-ativo") ? tr.querySelector(".descricao-ativo").value : "";
+            const hoje = obterDataHojeBrasilia();
+
+            adicionarAtivoDevolvido({
+                tipo: tipo,
+                patrimonio: patrimonio,
+                descricao: descricao,
+                dataDevolucao: hoje
+            });
+            tr.remove();
+
+            atualizarEstadoSecoesVazias();
+        }
+    }
+
+    async function confirmarRestaurar(botao) {
+        const confirmou = await abrirModalConfirmacao({
+            titulo: "Restaurar Ativo",
+            mensagem: "Deseja restaurar este ativo de volta para a Guarda?",
+            textoConfirmar: "Sim, Restaurar",
+            classeBotaoConfirmar: "btn-solid-success"
+        });
+
+        if (confirmou) {
+            const tr = botao.closest("tr");
+            const tipo = tr.querySelector(".tipo-ativo") ? tr.querySelector(".tipo-ativo").value : "LOCADO";
+            const patrimonio = tr.querySelector(".patrimonio-ativo") ? tr.querySelector(".patrimonio-ativo").value : "";
+            const descricao = tr.querySelector(".descricao-ativo") ? tr.querySelector(".descricao-ativo").value : "";
+            const hoje = obterDataHojeBrasilia();
+
+            adicionarAtivo({
+                tipo: tipo,
+                patrimonio: patrimonio,
+                descricao: descricao,
+                dataEntrega: hoje
+            });
+            tr.remove();
+
+            atualizarEstadoSecoesVazias();
+        }
+    }
+
+    async function confirmarDevolverTodos() {
+        const tbody = document.getElementById("ativos");
+        const linhas = tbody ? tbody.querySelectorAll("tr") : [];
+
+        if (linhas.length === 0) {
+            await mostrarAlerta("Aviso", "Não há ativos na tabela de Retirada para devolver.");
+            return;
+        }
+
+        const confirmou = await abrirModalConfirmacao({
+            titulo: "Devolver Todos os Ativos",
+            mensagem: `Deseja mover todos os ${linhas.length} ativo(s) da Retirada para a Devolução?`,
+            textoConfirmar: "Sim, Devolver Todos",
+            classeBotaoConfirmar: "btn-solid-primary"
+        });
+
+        if (confirmou) {
+            const hoje = obterDataHojeBrasilia();
+
+            linhas.forEach(tr => {
+                const tipo = tr.querySelector(".tipo-ativo") ? tr.querySelector(".tipo-ativo").value : "LOCADO";
+                const patrimonio = tr.querySelector(".patrimonio-ativo") ? tr.querySelector(".patrimonio-ativo").value : "";
+                const descricao = tr.querySelector(".descricao-ativo") ? tr.querySelector(".descricao-ativo").value : "";
+
+                adicionarAtivoDevolvido({
+                    tipo: tipo,
+                    patrimonio: patrimonio,
+                    descricao: descricao,
+                    dataDevolucao: hoje
+                });
+            });
+
+            tbody.innerHTML = "";
+            atualizarEstadoSecoesVazias();
+        }
+    }
+
+    async function confirmarRestaurarTodos() {
+        const tbodyDev = document.getElementById("ativosDevolvidos");
+        const linhas = tbodyDev ? tbodyDev.querySelectorAll("tr") : [];
+
+        if (linhas.length === 0) {
+            await mostrarAlerta("Aviso", "Não há ativos na tabela de Devolução para restaurar.");
+            return;
+        }
+
+        const confirmou = await abrirModalConfirmacao({
+            titulo: "Restaurar Todos os Ativos",
+            mensagem: `Deseja restaurar todos os ${linhas.length} ativo(s) de volta para a Guarda?`,
+            textoConfirmar: "Sim, Restaurar Todos",
+            classeBotaoConfirmar: "btn-solid-success"
+        });
+
+        if (confirmou) {
+            const hoje = obterDataHojeBrasilia();
+
+            linhas.forEach(tr => {
+                const tipo = tr.querySelector(".tipo-ativo") ? tr.querySelector(".tipo-ativo").value : "LOCADO";
+                const patrimonio = tr.querySelector(".patrimonio-ativo") ? tr.querySelector(".patrimonio-ativo").value : "";
+                const descricao = tr.querySelector(".descricao-ativo") ? tr.querySelector(".descricao-ativo").value : "";
+
+                adicionarAtivo({
+                    tipo: tipo,
+                    patrimonio: patrimonio,
+                    descricao: descricao,
+                    dataEntrega: hoje
+                });
+            });
+
+            tbodyDev.innerHTML = "";
+            atualizarEstadoSecoesVazias();
+        }
+    }
+
+    function organizarPatrimonio(pat) {
+        if (!pat) return "";
+        return pat
+            .replace(/[^\S\r\n]+(SIMCARD|SIM\s*CARD)/gi, "\n$1")
+            .replace(/[^\S\r\n]+((?:ST|S\/N|SN|NS|Service\s*Tag|Serial)\s*:)/gi, "\n$1")
+            .trim();
+    }
+
+    function organizarDescricao(desc) {
+        if (!desc) return "";
+        // (sem lookbehind: Safari/iOS antigo não aceita e o script inteiro deixaria de carregar)
+        const padraoRotulos = /[^\S\r\n]+(?=(?:Modelo(?:\s+do\s+\w+)?|Acess[óo]rios?|IMEI(?:\s*\d+)?|Linha(?:\s+\w+)?|Chip|ICCID|Operadora|S\/N|Service\s*Tag|Tag|Serial|Mem[óo]ria|Processador)\s*:)/gi;
+        return desc
+            .replace(padraoRotulos, "\n")
+            .split("\n")
+            .map(linha => linha.trim())
+            .filter(Boolean)
+            .join("\n");
+    }
+
+    function formatarParaHtml(texto) {
+        if (!texto) return "";
+        return texto
+            .trim()
+            .replace(/&/g, "&amp;")
+            .replace(/</g, "&lt;")
+            .replace(/>/g, "&gt;")
+            .replace(/\n/g, "<br>");
+    }
+
+    function escaparHtml(texto) {
+        return String(texto == null ? "" : texto)
+            .replace(/&/g, "&amp;")
+            .replace(/</g, "&lt;")
+            .replace(/>/g, "&gt;")
+            .replace(/"/g, "&quot;");
+    }
+
+    function formatarDataParaInput(dataStr) {
+        if (!dataStr) return "";
+        const partes = dataStr.trim().split("/");
+        if (partes.length === 3) {
+            return `${partes[2]}-${partes[1].padStart(2, "0")}-${partes[0].padStart(2, "0")}`;
+        }
+        return "";
+    }
+
+    function formatarDataParaExibicao(dataIso) {
+        if (!dataIso) return "";
+        const partes = dataIso.trim().split("-");
+        if (partes.length === 3) {
+            return `${partes[2]}/${partes[1]}/${partes[0]}`;
+        }
+        return dataIso;
+    }
+
+    function definirValor(id, valor) {
+        const el = document.getElementById(id);
+        if (el) el.value = valor;
+    }
+
+    // ============================================================
+    // IMPORTAÇÃO DE PDF
+    //   1) PDF gerado pelo SETAG  -> lê os dados embutidos (exato, sem adivinhar layout)
+    //   2) PDF antigo (Word/DocuSign) -> lê por posição de linha/coluna
+    //   Para diagnóstico: no console (F12) digite  SETAG_DEBUG = true  e importe de novo.
+    // ============================================================
+    const RE_TIPO_COL = /^Tipo\s+d[oe]\s+Patrim/i;
+    const RE_ROTULO_CAB = /^(?:(?:Tipo|do|de|Patrim[ôo]nio|Descri[çc][ãa]o|Complementar|S[ée]rie|Data|Entrega|Devolu[çc][ãa]o)[\s\/]*)+$/i;
+    // o texto do corpo da tabela pode começar até ~8pt à esquerda do texto do cabeçalho
+    const MARGEM_COLUNA = 15;
+
+    function limparFormularioImportacao() {
+        document.getElementById("ativos").innerHTML = "";
+        document.getElementById("ativosDevolvidos").innerHTML = "";
+        ["nome", "funcional", "area", "cargo", "localidade", "setor", "cc", "retirada",
+         "dataDevolucaoGeral", "descricaoProblemas", "descricaoProblemasDevolucao"].forEach(id => {
+            const el = document.getElementById(id);
+            if (el) { el.value = ""; el.classList.remove("campo-erro"); }
+        });
+        ["uso", "problemas", "usoDevolucao", "problemasDevolucao"].forEach(id => {
+            const el = document.getElementById(id);
+            if (el) {
+                el.checked = false;
+                el.closest(".condicoes-linha")?.classList.remove("condicao-erro");
+            }
+        });
+    }
+
+    async function lerPaginasPdf(bytes) {
+        const pdf = await pdfjsLib.getDocument({
+            data: bytes,
+            cMapUrl: "https://cdnjs.cloudflare.com/ajax/libs/pdf.js/3.11.174/cmaps/",
+            cMapPacked: true
+        }).promise;
+
+        const paginas = [];
+        for (let n = 1; n <= pdf.numPages; n++) {
+            const page = await pdf.getPage(n);
+            const content = await page.getTextContent();
+            paginas.push(
+                content.items
+                    .filter(i => typeof i.str === "string")
+                    .map(i => ({ str: i.str, x: i.transform[4], y: i.transform[5], w: i.width || 0 }))
+            );
+        }
+        if (window.SETAG_DEBUG) console.log("SETAG_DEBUG páginas/itens:", paginas);
+        return paginas;
+    }
+
+    // ---------- Dados embutidos no PDF gerado pelo SETAG ----------
+    function codificarPayload(obj) {
+        const bytes = new TextEncoder().encode(JSON.stringify(obj));
+        let bin = "";
+        bytes.forEach(b => bin += String.fromCharCode(b));
+        return btoa(bin);
+    }
+
+    function decodificarPayload(b64) {
+        const bin = atob(b64);
+        const bytes = new Uint8Array(bin.length);
+        for (let i = 0; i < bin.length; i++) bytes[i] = bin.charCodeAt(i);
+        return JSON.parse(new TextDecoder().decode(bytes));
+    }
+
+    function coletarLinhas(tbodyId) {
+        return Array.from(document.querySelectorAll(`#${tbodyId} tr`)).map(tr => ({
+            tipo: tr.querySelector(".tipo-ativo")?.value || "LOCADO",
+            patrimonio: tr.querySelector(".patrimonio-ativo")?.value || "",
+            descricao: tr.querySelector(".descricao-ativo")?.value || "",
+            data: tr.querySelector(".data-ativo")?.value || ""
+        }));
+    }
+
+    // Texto branco de 2px no início do documento (invisível no papel, mas presente no PDF)
+    function gerarPayloadOculto() {
+        const v = id => (document.getElementById(id)?.value || "").trim();
+        const c = id => !!document.getElementById(id)?.checked;
+        const dados = {
+            v: 1,
+            nome: v("nome"), funcional: v("funcional"), area: v("area"), cargo: v("cargo"),
+            localidade: v("localidade"), setor: v("setor"), cc: v("cc"),
+            retirada: {
+                data: v("retirada"), uso: c("uso"), problemas: c("problemas"),
+                descProblemas: c("problemas") ? v("descricaoProblemas") : "", itens: coletarLinhas("ativos")
+            },
+            devolucao: {
+                data: v("dataDevolucaoGeral"), uso: c("usoDevolucao"), problemas: c("problemasDevolucao"),
+                descProblemas: c("problemasDevolucao") ? v("descricaoProblemasDevolucao") : "", itens: coletarLinhas("ativosDevolvidos")
+            }
+        };
+        return `<div aria-hidden="true" style="position:absolute;left:0;top:0;width:100%;font-size:2px;line-height:2px;color:transparent;word-break:break-all;pointer-events:none;">SETAGDATA1:${codificarPayload(dados)}:END</div>`;
+    }
+
+    function aplicarPayload(d) {
+        limparFormularioImportacao();
+        ["nome", "funcional", "area", "cargo", "localidade", "setor", "cc"].forEach(k => definirValor(k, d[k] || ""));
+
+        const r = d.retirada || {}, dv = d.devolucao || {};
+        (r.itens || []).forEach(i => adicionarAtivo({
+            tipo: i.tipo, patrimonio: i.patrimonio, descricao: i.descricao, dataEntrega: i.data
+        }));
+        (dv.itens || []).forEach(i => adicionarAtivoDevolvido({
+            tipo: i.tipo, patrimonio: i.patrimonio, descricao: i.descricao, dataDevolucao: i.data
+        }));
+
+        definirValor("retirada", ""); // data vigente, preenchida em finalizarImportacao
+        document.getElementById("uso").checked = !!r.uso;
+        document.getElementById("problemas").checked = !!r.problemas;
+        definirValor("descricaoProblemas", r.descProblemas || "");
+
+        definirValor("dataDevolucaoGeral", ""); // data vigente, preenchida em finalizarImportacao
+        document.getElementById("usoDevolucao").checked = !!dv.uso;
+        document.getElementById("problemasDevolucao").checked = !!dv.problemas;
+        definirValor("descricaoProblemasDevolucao", dv.descProblemas || "");
+
+        finalizarImportacao();
+    }
+
+    // ---------- Fluxo principal ----------
+    // Retorna "completo" (dados embutidos), "layout" (leitura por posição) ou "vazio"
+    function processarPaginas(paginas) {
+        const colado = paginas.map(p => p.map(i => i.str).join("")).join("").replace(/\s+/g, "");
+        const m = colado.match(/SETAGDATA1:([A-Za-z0-9+\/=]+):END/);
+        if (m) {
+            try {
+                aplicarPayload(decodificarPayload(m[1]));
+                return "completo";
+            } catch (e) {
+                console.warn("Dados embutidos inválidos; usando leitura por layout.", e);
+            }
+        }
+
+        limparFormularioImportacao();
+        const textos = paginas.map(textoDaPagina);
+
+        extrairDadosColaborador(textos[0] || "");
+
+        // cada página é lida separadamente (coordenadas de páginas diferentes não se misturam)
+        paginas.forEach(items => {
+            lerTabela(items, false).forEach(l => adicionarAtivo({
+                tipo: l.tipo, patrimonio: l.patrimonio, descricao: l.descricao, dataEntrega: l.data
+            }));
+            lerTabela(items, true).forEach(l => adicionarAtivoDevolvido({
+                tipo: l.tipo, patrimonio: l.patrimonio, descricao: l.descricao, dataDevolucao: l.data
+            }));
+        });
+
+        aplicarCondicoesEDatas(textos.join(" "));
+        finalizarImportacao();
+
+        const achou = verificarSeTabelaTemItens("ativos") ||
+                      verificarSeTabelaTemItens("ativosDevolvidos") ||
+                      !!document.getElementById("nome").value.trim();
+        return achou ? "layout" : "vazio";
+    }
+
+    function finalizarImportacao() {
+        atualizarEstadoSecoesVazias();
+        const hoje = obterDataHojeBrasilia();
+        if (verificarSeTabelaTemItens("ativos") && !document.getElementById("retirada").value) {
+            definirValor("retirada", hoje);
+        }
+        if (verificarSeTabelaTemItens("ativosDevolvidos") && !document.getElementById("dataDevolucaoGeral").value) {
+            definirValor("dataDevolucaoGeral", hoje);
+        }
+    }
+
+    function mensagemStatusImportacao(modo, nomeArquivo) {
+        if (modo === "completo") return `Termo "${nomeArquivo}" importado com sucesso!`;
+        if (modo === "layout") return `Termo antigo "${nomeArquivo}" importado por leitura de layout — confira os campos.`;
+        if (modo === "docx") return `Termo Word "${nomeArquivo}" importado — confira os campos.`;
+        return `Nada foi reconhecido em "${nomeArquivo}" (PDF escaneado/imagem ou layout diferente do termo padrão).`;
+    }
+
+    // ---------- Dados do colaborador (texto entre rótulos) ----------
+    // Texto da página na ordem do PDF. Pedaços colados na mesma linha (vão <= 1,5pt) NÃO recebem espaço:
+    // alguns PDFs cortam "Localidade" em "L" + "ocalidad" + "e"; juntar com espaço separaria a palavra.
+    function textoDaPagina(items) {
+        let t = "", ant = null;
+        items.forEach(it => {
+            if (!it.str) return;
+            const colado = ant && Math.abs(it.y - ant.y) < 2 && it.x >= ant.x && (it.x - (ant.x + ant.w)) <= 1.5;
+            t += (colado ? "" : " ") + it.str;
+            ant = it;
+        });
+        return t.replace(/\s+/g, " ").trim();
+    }
+
+    // Rótulo tolerante a letras/pedaços separados: "Setor" -> S\s*e\s*t\s*o\s*r
+    function rotuloTolerante(palavra) {
+        return palavra.replace(/\s+/g, "").split("").map(c => {
+            const b = c.toLowerCase();
+            if (b === "á") return "[ÁáAa]";
+            if (b === "í") return "[ÍíIi]";
+            if (b === "ô") return "[ÔôOo]";
+            if (b === "ã") return "[ÃãAa]";
+            if (b === "é") return "[ÉéEe]";
+            return c;
+        }).join("\\s*");
+    }
+
+    function extrairDadosColaborador(texto) {
+        const t = (texto || "").replace(/\s+/g, " ");
+        const iniSec = t.search(new RegExp(rotuloTolerante("Nome do Colaborador"), "i"));
+        const fimSec = t.search(new RegExp(rotuloTolerante("Dados do Patrimônio"), "i"));
+        const sec = t.substring(iniSec >= 0 ? iniSec : 0, fimSec > iniSec ? fimSec : t.length);
+
+        const rotulos = [
+            { campo: "nome",       re: rotuloTolerante("Nome do Colaborador") + "(?:\\s*\\([^)]*\\))?|" + rotuloTolerante("Responsável pelo Ativo") },
+            { campo: "funcional",  re: rotuloTolerante("Funcional") + "|" + rotuloTolerante("Matrícula") },
+            { campo: "area",       re: rotuloTolerante("Área") },
+            { campo: "cargo",      re: rotuloTolerante("Cargo") },
+            { campo: "localidade", re: rotuloTolerante("Localidade") },
+            { campo: "setor",      re: rotuloTolerante("Setor") },
+            { campo: "cc",         re: rotuloTolerante("Centro de Custo") }
+        ];
+
+        // Cada rótulo é localizado uma vez; o valor é o texto entre ele e o próximo rótulo
+        const achados = [];
+        rotulos.forEach(r => {
+            const rx = new RegExp("(^|[^A-Za-zÀ-ÿ])(" + r.re + ")\\s*:?", "i");
+            const m = rx.exec(sec);
+            if (m) {
+                achados.push({
+                    campo: r.campo,
+                    ini: m.index + m[1].length,
+                    fim: m.index + m[0].length
+                });
+            }
+        });
+        achados.sort((a, b) => a.ini - b.ini);
+
+        achados.forEach((a, i) => {
+            const prox = achados[i + 1] ? achados[i + 1].ini : sec.length;
+            definirValor(a.campo, sec.substring(a.fim, prox).trim());
+        });
+    }
+
+    // ---------- Tabelas de ativos (leitura por linha e coluna) ----------
+    function montarTextoCelula(arr) {
+        const itens = arr.filter(i => i.str.trim()).sort((a, b) => b.y - a.y);
+        const linhas = [];
+        itens.forEach(it => {
+            const ult = linhas[linhas.length - 1];
+            if (ult && Math.abs(ult.y - it.y) <= 3.5) ult.itens.push(it);
+            else linhas.push({ y: it.y, itens: [it] });
+        });
+        return linhas.map(l => {
+            let t = "", fimAnterior = null;
+            l.itens.sort((a, b) => a.x - b.x).forEach(it => {
+                if (fimAnterior !== null && it.x - fimAnterior > 1.5) t += " ";
+                t += it.str;
+                fimAnterior = it.x + it.w;
+            });
+            return t.replace(/[ \t]+/g, " ").trim();
+        }).filter(Boolean).join("\n");
+    }
+
+    /** Agrupa os itens de texto em linhas (mesmo y), com o texto da linha já montado */
+    function agruparLinhas(itens) {
+        const ord = itens.filter(i => i.str.trim()).sort((a, b) => b.y - a.y);
+        const linhas = [];
+        ord.forEach(it => {
+            const ult = linhas[linhas.length - 1];
+            if (ult && ult.y - it.y <= 2.5) ult.itens.push(it);
+            else linhas.push({ y: it.y, itens: [it] });
+        });
+        linhas.forEach(l => {
+            l.itens.sort((a, b) => a.x - b.x);
+            l.x = l.itens[0].x;
+            l.texto = l.itens.map(i => i.str).join(" ").replace(/\s+/g, " ").trim();
+        });
+        return linhas;
+    }
+
+    /** Retorna as linhas da tabela (Retirada ou Devolução) de UMA página, ou [] */
+    function lerTabela(items, isDev) {
+        // Detecção por LINHA de texto (não por item): funciona mesmo se o PDF quebrar o texto em pedaços
+        const linhasPag = agruparLinhas(items);
+
+        // Qual tabela é? A de Retirada tem "Data de Entrega" no cabeçalho; a de Devolução não.
+        const ehDevolucao = l => !linhasPag.some(x =>
+            x.y <= l.y + 3 && x.y >= l.y - 16 && /Entrega/i.test(x.texto));
+        const cabs = linhasPag
+            .filter(l => /Tipo\s+d[oe]\s+Patrim/i.test(l.texto) && ehDevolucao(l) === isDev)
+            .sort((a, b) => b.y - a.y);
+        if (!cabs.length) return [];
+
+        const cab = cabs[0], yCab = cab.y;
+
+        // Fim da tabela: o título das condições OU a primeira linha que começa com ☒/☐ e não é
+        // linha de ativo ("☒ Em perfeitas condições...", "☐ Com os seguintes problemas...").
+        // Sem isso, a última linha vazia da tabela "engole" os parágrafos que vêm abaixo.
+        const reTitulo = isDev
+            ? /Devolu[çc][ãa]o\s*[-–]\s*Condi/i
+            : /Retirada\s*[-–]\s*Condi/i;
+        const fins = linhasPag.filter(l => l.y < yCab - 8 &&
+            (reTitulo.test(l.texto) || (/^[☒☑☐]/.test(l.texto) && !RE_TIPO.test(l.texto))));
+        const yFim = fins.length ? Math.max(...fins.map(l => l.y)) : 45;
+
+        // Divisores de coluna a partir do cabeçalho real deste PDF.
+        // Itens do cabeçalho separados por mais de 12pt são colunas diferentes (palavras da mesma coluna ficam coladas).
+        const colunasCab = [];
+        let fimAnt = null;
+        cab.itens.forEach(it => {
+            if (fimAnt === null || it.x - fimAnt > 12) colunasCab.push(it.x);
+            fimAnt = Math.max(fimAnt === null ? -1e9 : fimAnt, it.x + it.w);
+        });
+
+        const x0 = cab.x;
+        let d2, d3, d4;
+        if (colunasCab.length === 4) {
+            d2 = colunasCab[1] - MARGEM_COLUNA;
+            d3 = colunasCab[2] - MARGEM_COLUNA;
+            d4 = colunasCab[3] - MARGEM_COLUNA;
+        } else {
+            const faixa = items.filter(i => Math.abs(i.y - yCab) <= 3);
+            const achaX = re => { const f = faixa.find(i => re.test(i.str.trim())); return f ? f.x : null; };
+            d2 = (achaX(/^N[º°o.]{1,2}(?:\s*Patrim.*)?$/i) ?? (x0 + 102)) - MARGEM_COLUNA;
+            d3 = (achaX(/^Descri[çc][ãa]o/i)               ?? (x0 + 214)) - MARGEM_COLUNA;
+            d4 = (achaX(/^Data\b/i)                        ?? (x0 + 408)) - MARGEM_COLUNA;
+        }
+
+        const corpo = items.filter(i =>
+            i.str.trim() &&
+            i.y < yCab - 8 && i.y > yFim + 2 &&
+            !(i.y > yCab - 15 && RE_ROTULO_CAB.test(i.str.trim()))   // 2ª linha de cabeçalho quebrado
+        );
+
+        // Âncoras de linha: um rótulo de patrimônio próprio por ativo, na coluna Tipo
+        const proprios = corpo.filter(i => i.x < d2 && RE_PROPRIO.test(i.str)).sort((a, b) => b.y - a.y);
+        const locados = corpo.filter(i => i.x < d2 && /LOCADO/i.test(i.str));
+        if (!proprios.length) return [];
+
+        const refs = proprios.map(u => {
+            const l = locados.filter(x => x.y < u.y && u.y - x.y < 25).sort((a, b) => b.y - a.y)[0];
+            const yl = l ? l.y : u.y - 12;
+            return { yu: u.y, yl, centro: (u.y + yl) / 2 };
+        });
+
+        // Linhas de texto das colunas Tipo/Patrimônio/Descrição
+        const ysLinhas = [];
+        corpo.filter(i => i.x < d4).map(i => i.y).sort((a, b) => b - a).forEach(y => {
+            if (!ysLinhas.length || ysLinhas[ysLinhas.length - 1] - y > 2.5) ysLinhas.push(y);
+        });
+
+        // Fronteira entre duas linhas = MAIOR vão entre linhas de texto situado entre os dois centros
+        const limites = [Infinity];
+        for (let i = 0; i < refs.length - 1; i++) {
+            const cima = refs[i].centro, baixo = refs[i + 1].centro, m0 = (cima + baixo) / 2;
+            let melhor = null;
+            for (let k = 0; k < ysLinhas.length - 1; k++) {
+                const a = ysLinhas[k], b = ysLinhas[k + 1], meio = (a + b) / 2, gap = a - b;
+                if (meio < cima - 1 && meio > baixo + 1) {
+                    if (!melhor || gap > melhor.gap + 0.5 ||
+                        (Math.abs(gap - melhor.gap) <= 0.5 && Math.abs(meio - m0) < Math.abs(melhor.meio - m0))) {
+                        melhor = { gap, meio };
+                    }
+                }
+            }
+            limites.push(melhor ? melhor.meio : m0);
+        }
+        limites.push(-Infinity);
+
+        const linhas = refs.map(() => ({ pat: [], desc: [], data: [] }));
+        corpo.forEach(i => {
+            if (i.x < d2) return;
+            for (let r = 0; r < linhas.length; r++) {
+                if (i.y <= limites[r] && i.y > limites[r + 1]) {
+                    if (i.x < d3) linhas[r].pat.push(i);
+                    else if (i.x < d4) linhas[r].desc.push(i);
+                    else linhas[r].data.push(i);
+                    break;
+                }
+            }
+        });
+
+        const textoLinhaTipo = y => corpo
+            .filter(i => i.x < d2 && Math.abs(i.y - y) <= 5)
+            .map(i => i.str).join(" ");
+
+        const resultado = [];
+        linhas.forEach((l, idx) => {
+            const pat = organizarPatrimonio(montarTextoCelula(l.pat));
+            let desc = organizarDescricao(montarTextoCelula(l.desc));
+            if (!pat && !desc) return; // linha vazia do modelo
+
+            // Tipo: qual quadradinho (☒) está na mesma linha do patrimônio próprio / LOCADO
+            let tipo = "LOCADO";
+            if (/[☒☑]/.test(textoLinhaTipo(refs[idx].yu))) tipo = "PROPRIO";
+            else if (/[☒☑]/.test(textoLinhaTipo(refs[idx].yl))) tipo = "LOCADO";
+
+            let md = l.data.map(i => i.str).join(" ").match(/\d{2}\/\d{2}\/\d{4}/);
+            if (!md) { // segurança: data colada no fim da descrição
+                const m2 = desc.match(/\s*(\d{2}\/\d{2}\/\d{4})\s*$/);
+                if (m2) { md = [m2[1]]; desc = desc.slice(0, m2.index).trim(); }
+            }
+            resultado.push({
+                tipo, patrimonio: pat, descricao: desc,
+                data: md ? formatarDataParaInput(md[0]) : ""
+            });
+        });
+        return resultado;
+    }
+
+    // ---------- Condições de uso e datas gerais ----------
+    function analisarCondicoesEDatas(todo) {
+        const iR  = todo.search(/Retirada\s*[-–]\s*Condi/i);
+        const iDI = todo.search(/Devolu[çc][ãa]o\s*[-–]\s*Itens/i);
+        const secR = iR >= 0 ? todo.substring(iR, iDI > iR ? iDI : todo.length) : "";
+        const secD = iDI >= 0 ? todo.substring(iDI) : "";
+
+        const lerCond = sec => {
+            const m1 = sec.match(/([☒☑☐])\s*Em perfeitas condi[çc][õo]es de uso/i);
+            const m2 = sec.match(/([☒☑☐])\s*Com os seguintes problemas:?\s*([\s\S]*?)(?=\s*[☒☑☐]|\s*Data da|$)/i);
+            return {
+                uso: !!m1 && /[☒☑]/.test(m1[1]),
+                prob: !!m2 && /[☒☑]/.test(m2[1]),
+                desc: m2 ? m2[2].replace(/_+/g, "").trim() : ""
+            };
+        };
+        const dR = todo.match(/Data\s+da\s+Retirada\s*(\d{2}\/\d{2}\/\d{4})/i);
+        const dD = todo.match(/Data\s+da\s+Devolu[çc][ãa]o\s*(\d{2}\/\d{2}\/\d{4})/i);
+        return {
+            ret: lerCond(secR), dev: lerCond(secD),
+            dataRet: dR ? formatarDataParaInput(dR[1]) : "",
+            dataDev: dD ? formatarDataParaInput(dD[1]) : ""
+        };
+    }
+
+    function aplicarCondicoesEDatas(todo) {
+        const r = analisarCondicoesEDatas(todo);
+
+        if (verificarSeTabelaTemItens("ativos")) {
+            document.getElementById("uso").checked = r.ret.uso;
+            document.getElementById("problemas").checked = r.ret.prob;
+            definirValor("descricaoProblemas", r.ret.prob ? r.ret.desc : "");
+            // Data da Retirada geral: sempre a data vigente (editável); não herda a do arquivo antigo
+        }
+        if (verificarSeTabelaTemItens("ativosDevolvidos")) {
+            document.getElementById("usoDevolucao").checked = r.dev.uso;
+            document.getElementById("problemasDevolucao").checked = r.dev.prob;
+            definirValor("descricaoProblemasDevolucao", r.dev.prob ? r.dev.desc : "");
+            // Data da Devolução geral: data vigente (editável); finalizarImportacao preenche
+        }
+    }
+
+    // ============================================================
+    // IMPORTAÇÃO DE WORD (.docx)
+    //   Lê pela ESTRUTURA do documento (tabelas, linhas e células): não depende de posição.
+    // ============================================================
+    function attrLocal(el, nome) {
+        const attrs = el.attributes ? Array.from(el.attributes) : [];
+        for (const a of attrs) { if (a.localName === nome) return a.value; }
+        return null;
+    }
+    function filhosElemento(el) { return Array.from(el.childNodes).filter(n => n.nodeType === 1); }
+
+    // Filhos com o nome dado, "enxergando através" de controles de conteúdo (w:sdt) e marcações
+    function filhosTransparentes(el, nome) {
+        const out = [];
+        filhosElemento(el).forEach(n => {
+            if (n.localName === nome) out.push(n);
+            else if (n.localName === "sdt") {
+                const c = filhosElemento(n).find(x => x.localName === "sdtContent");
+                if (c) out.push(...filhosTransparentes(c, nome));
+            } else if (["customXml", "ins", "moveTo", "smartTag"].indexOf(n.localName) >= 0) {
+                out.push(...filhosTransparentes(n, nome));
+            }
+        });
+        return out;
+    }
+    function acharDescendente(el, nome) {
+        for (const n of filhosElemento(el)) {
+            if (n.localName === nome) return n;
+            const r = acharDescendente(n, nome);
+            if (r) return r;
+        }
+        return null;
+    }
+    function valorLigado(v) { return v !== null && !/^(0|false|off)$/i.test(v); }
+
+    function simboloWord(sym) {
+        const char = attrLocal(sym, "char");
+        const fonte = (attrLocal(sym, "font") || "").toLowerCase();
+        if (!char) return "";
+        let cod = parseInt(char, 16);
+        if (isNaN(cod)) return "";
+        if (cod >= 0xF000) cod -= 0xF000;
+        if (cod === 0x2612 || cod === 0x2611) return "☒";
+        if (cod === 0x2610) return "☐";
+        if (fonte.indexOf("wingdings") >= 0) {
+            if (cod === 0xFE || cod === 0xFD) return "☒";
+            if (cod === 0xA8 || cod === 0x6F) return "☐";
+        }
+        return "";
+    }
+
+    // Caixa de seleção "antiga" (campo de formulário legado): true / false / null (não é caixa)
+    function checkboxLegado(fld) {
+        const cb = acharDescendente(fld, "checkBox");
+        if (!cb) return null;
+        const ck = filhosElemento(cb).find(x => x.localName === "checked");
+        if (ck) { const v = attrLocal(ck, "val"); return v === null || valorLigado(v); }
+        const df = filhosElemento(cb).find(x => x.localName === "default");
+        return df ? valorLigado(attrLocal(df, "val")) : false;
+    }
+
+    const TAGS_IGNORADAS = ["rPr", "pPr", "sdtPr", "sdtEndPr", "instrText", "delText", "tblPr", "trPr",
+                            "tcPr", "tblGrid", "Fallback", "bookmarkStart", "bookmarkEnd", "proofErr"];
+
+    // Texto de um nó (parágrafo, run, controle...) na ordem do documento; caixas viram ☒ / ☐
+    function textoRuns(no) {
+        let t = "";
+        filhosElemento(no).forEach(n => {
+            switch (n.localName) {
+                case "t": t += n.textContent; break;
+                case "tab": t += " "; break;
+                case "br": case "cr": t += "\n"; break;
+                case "noBreakHyphen": t += "-"; break;
+                case "sym": t += simboloWord(n); break;
+                case "p": t += textoRuns(n) + "\n"; break; // parágrafo dentro de caixa de texto
+                case "fldChar": {
+                    const m = checkboxLegado(n);
+                    if (m !== null) t += m ? "☒" : "☐";
+                    break;
+                }
+                case "sdt": {
+                    const pr = filhosElemento(n).find(x => x.localName === "sdtPr");
+                    const cb = pr ? acharDescendente(pr, "checkbox") : null;
+                    const conteudo = filhosElemento(n).find(x => x.localName === "sdtContent");
+                    const txt = conteudo ? textoRuns(conteudo) : "";
+                    if (cb) {
+                        const ck = acharDescendente(cb, "checked");
+                        const glifo = ck ? (valorLigado(attrLocal(ck, "val")) ? "☒" : "☐") : null;
+                        if (glifo === null) t += /[☒☑☐]/.test(txt) ? txt : "☐" + txt;
+                        else t += /[☒☑☐]/.test(txt) ? txt.replace(/[☒☑☐]/, glifo) : glifo + txt;
+                    } else {
+                        t += txt;
+                    }
+                    break;
+                }
+                default:
+                    if (TAGS_IGNORADAS.indexOf(n.localName) < 0) t += textoRuns(n);
+            }
+        });
+        return t;
+    }
+
+    // Um texto por parágrafo (tabelas aninhadas são "achatadas" célula a célula)
+    function blocosTexto(container) {
+        const out = [];
+        filhosElemento(container).forEach(n => {
+            if (n.localName === "p") {
+                out.push(textoRuns(n));
+            } else if (n.localName === "tbl") {
+                filhosTransparentes(n, "tr").forEach(tr =>
+                    filhosTransparentes(tr, "tc").forEach(tc => out.push(...blocosTexto(tc))));
+            } else if (n.localName === "sdt") {
+                const c = filhosElemento(n).find(x => x.localName === "sdtContent");
+                if (c) out.push(...blocosTexto(c));
+            } else if (["customXml", "ins", "moveTo", "smartTag", "body", "txbxContent"].indexOf(n.localName) >= 0) {
+                out.push(...blocosTexto(n));
+            }
+        });
+        return out;
+    }
+
+    function coletarTabelas(no, saida) {
+        filhosElemento(no).forEach(n => {
+            if (n.localName === "tbl") saida.push(n);
+            coletarTabelas(n, saida);
+        });
+        return saida;
+    }
+
+    function tipoDaCelula(txt) {
+        const linhas = txt.split("\n");
+        for (const l of linhas) {
+            if (/[☒☑]/.test(l)) {
+                if (RE_PROPRIO.test(l)) return "PROPRIO";
+                if (/LOCADO/i.test(l)) return "LOCADO";
+            }
+        }
+        return RE_PROPRIO_MARCADO.test(txt) ? "PROPRIO" : "LOCADO";
+    }
+
+    // Tabelas de ativos: acha o cabeçalho "Tipo do Patrimônio", mapeia as colunas e lê cada linha
+    function lerTabelasDocx(body) {
+        const r = { ret: [], dev: [] };
+        coletarTabelas(body, []).forEach(tbl => {
+            const linhas = filhosTransparentes(tbl, "tr").map(tr =>
+                filhosTransparentes(tr, "tc").map(tc => blocosTexto(tc).join("\n").trim()));
+
+            const iCab = linhas.findIndex(c => c.length >= 3 &&
+                c.some(x => x.length < 60 && /Tipo\s+d[oe]\s+Patrim/i.test(x)));
+            if (iCab < 0) return;
+
+            const cab = linhas[iCab];
+            const acha = (re, padrao) => {
+                const i = cab.findIndex(x => x.length < 60 && re.test(x));
+                return i >= 0 ? i : padrao;
+            };
+            const idx = {
+                tipo: acha(/Tipo/i, 0),
+                pat:  acha(/^N[º°o.]{1,2}\s*Patrim/i, 1),
+                desc: acha(/^Descri/i, 2),
+                data: acha(/^Data/i, 3)
+            };
+            const ehDev = !/Entrega/i.test(cab.join(" "));
+
+            for (let i = iCab + 1; i < linhas.length; i++) {
+                const c = linhas[i];
+                const tipoTxt = c[idx.tipo] || "";
+                if (!RE_TIPO.test(tipoTxt)) break; // acabou a tabela de ativos
+
+                const pat = organizarPatrimonio((c[idx.pat] || "").trim());
+                const desc = organizarDescricao((c[idx.desc] || "").trim());
+                if (!pat && !desc) continue; // linha vazia do modelo
+
+                const md = (c[idx.data] || "").match(/\d{2}\/\d{2}\/\d{4}/);
+                (ehDev ? r.dev : r.ret).push({
+                    tipo: tipoDaCelula(tipoTxt), patrimonio: pat, descricao: desc,
+                    data: md ? formatarDataParaInput(md[0]) : ""
+                });
+            }
+        });
+        return r;
+    }
+
+    function analisarDocumentoDocx(xml) {
+        const doc = new DOMParser().parseFromString(xml, "application/xml");
+        if (doc.getElementsByTagName("parsererror").length) throw new Error("XML do Word ilegível.");
+        const raiz = doc.documentElement;
+        const body = filhosElemento(raiz).find(n => n.localName === "body") || raiz;
+        const texto = blocosTexto(body).join(" ").replace(/\s+/g, " ").trim();
+        const tab = lerTabelasDocx(body);
+        if (window.SETAG_DEBUG) console.log("SETAG_DEBUG docx:", { texto, ret: tab.ret, dev: tab.dev });
+        return { texto, ret: tab.ret, dev: tab.dev };
+    }
+
+    async function lerDocx(bytes) {
+        if (typeof JSZip === "undefined") throw new Error("Biblioteca JSZip não carregada.");
+        const zip = await JSZip.loadAsync(bytes);
+        const arq = zip.file("word/document.xml");
+        if (!arq) throw new Error("Arquivo .docx inválido.");
+        return analisarDocumentoDocx(await arq.async("string"));
+    }
+
+    function processarDocx(r) {
+        limparFormularioImportacao();
+        extrairDadosColaborador(r.texto);
+        r.ret.forEach(l => adicionarAtivo({
+            tipo: l.tipo, patrimonio: l.patrimonio, descricao: l.descricao, dataEntrega: l.data
+        }));
+        r.dev.forEach(l => adicionarAtivoDevolvido({
+            tipo: l.tipo, patrimonio: l.patrimonio, descricao: l.descricao, dataDevolucao: l.data
+        }));
+        aplicarCondicoesEDatas(r.texto);
+        finalizarImportacao();
+
+        const achou = verificarSeTabelaTemItens("ativos") ||
+                      verificarSeTabelaTemItens("ativosDevolvidos") ||
+                      !!document.getElementById("nome").value.trim();
+        return achou ? "docx" : "vazio";
+    }
+
+    // ---------- Entradas: computador e Google Drive ----------
+    // Decide o leitor pelo tipo do arquivo: .docx (Word) ou PDF
+    async function importarBytes(bytes, nomeArquivo, mime) {
+        const nome = (nomeArquivo || "").toLowerCase();
+        if (/\.docx$/.test(nome) || /wordprocessingml/i.test(mime || "")) {
+            return processarDocx(await lerDocx(bytes));
+        }
+        if (/\.doc$/.test(nome)) throw new Error("FORMATO_DOC");
+        if (typeof pdfjsLib === "undefined") throw new Error("Biblioteca PDF.js não carregada.");
+        return processarPaginas(await lerPaginasPdf(bytes));
+    }
+
+    async function importarPDF() {
+        const inputArquivo = document.getElementById("pdfFile");
+        const arquivo = inputArquivo && inputArquivo.files ? inputArquivo.files[0] : null;
+        if (!arquivo) return;
+
+        const statusElem = document.getElementById("statusImportacao");
+        if (statusElem) statusElem.innerText = `Processando "${arquivo.name}"...`;
+
+        try {
+            const bytes = new Uint8Array(await arquivo.arrayBuffer());
+            const modo = await importarBytes(bytes, arquivo.name, arquivo.type);
+            if (statusElem) statusElem.innerText = mensagemStatusImportacao(modo, arquivo.name);
+        } catch (erro) {
+            console.error("Erro na leitura do arquivo:", erro);
+            if (statusElem) statusElem.innerText = "Erro ao importar o arquivo.";
+            if (erro && erro.message === "FORMATO_DOC") {
+                await mostrarAlerta("Formato não suportado", "Arquivos .doc (Word antigo) não são lidos. Abra no Word e salve como .docx.");
+            } else {
+                await mostrarAlerta("Erro", "Não foi possível extrair os dados deste arquivo.");
+            }
+        } finally {
+            if (inputArquivo) inputArquivo.value = "";
+        }
+    }
+
+    function carregarPdfDiretoDoDrive(fileId) {
+        const status = document.getElementById("statusImportacao");
+        status.innerText = "Baixando termo do Drive e preenchendo formulário...";
+
+        google.script.run
+            .withSuccessHandler(async (resposta) => {
+                if (!resposta.sucesso) {
+                    status.innerText = "Erro ao obter arquivo: " + resposta.erro;
+                    return;
+                }
+
+                try {
+                    const binario = atob(resposta.base64);
+                    const bytes = new Uint8Array(binario.length);
+                    for (let i = 0; i < binario.length; i++) {
+                        bytes[i] = binario.charCodeAt(i);
+                    }
+
+                    const modo = await importarBytes(bytes, resposta.nome, resposta.mime);
+                    status.innerText = mensagemStatusImportacao(modo, resposta.nome);
+                    document.getElementById("listaResultadosDrive").style.display = "none";
+                } catch (err) {
+                    console.error(err);
+                    status.innerText = "Erro ao interpretar conteúdo do arquivo.";
+                }
+            })
+            .withFailureHandler((erro) => {
+                status.innerText = "Falha ao baixar arquivo: " + erro;
+            })
+            .obterPdfBase64Drive(fileId);
+    }
+
+    // Nome do arquivo: "Funcional - Nome completo" (sem caracteres inválidos em nome de arquivo)
+    function nomeArquivoTermo() {
+        const funcional = (document.getElementById("funcional")?.value || "").trim();
+        const nome = (document.getElementById("nome")?.value || "").trim();
+        const bruto = (funcional && nome) ? `${funcional} - ${nome}` : (funcional || nome || "Termo de Ativos");
+        return bruto.replace(/[\\\/:*?"<>|]+/g, " ").replace(/\s+/g, " ").trim();
+    }
+
+    function definirNomeArquivoTermo() {
+        document.title = nomeArquivoTermo();
+    }
+
+    async function gerarPreview() {
+        try {
+            const uso = document.getElementById("uso") ? document.getElementById("uso").checked : false;
+            const problemas = document.getElementById("problemas") ? document.getElementById("problemas").checked : false;
+            const usoDevolucao = document.getElementById("usoDevolucao") ? document.getElementById("usoDevolucao").checked : false;
+            const problemasDevolucao = document.getElementById("problemasDevolucao") ? document.getElementById("problemasDevolucao").checked : false;
+
+            let temErro = false;
+            let primeiroElementoComErro = null;
+
+            const marcarErroInput = (el) => {
+                if (!el) return;
+                el.classList.add("campo-erro");
+                if (!primeiroElementoComErro) primeiroElementoComErro = el;
+                temErro = true;
+            };
+
+            const marcarErroCondicoes = (idUso, idProb) => {
+                const elUso = document.getElementById(idUso);
+                const elProb = document.getElementById(idProb);
+                elUso?.closest(".condicoes-linha")?.classList.add("condicao-erro");
+                elProb?.closest(".condicoes-linha")?.classList.add("condicao-erro");
+                if (!primeiroElementoComErro && elUso) primeiroElementoComErro = elUso;
+                temErro = true;
+            };
+
+            const temAtivosRetirada = verificarSeTabelaTemItens("ativos");
+            const temAtivosDevolucao = verificarSeTabelaTemItens("ativosDevolvidos");
+
+            if (!temAtivosRetirada && !temAtivosDevolucao) {
+                await mostrarAlerta("Atenção", "O termo precisa ter ao menos um item preenchido em Retirada ou em Devolução.");
+                return;
+            }
+
+            // 1. VALIDAÇÃO RETIRADA
+            if (temAtivosRetirada) {
+                if (!uso && !problemas) {
+                    marcarErroCondicoes("uso", "problemas");
+                }
+
+                if (problemas) {
+                    const inputDesc = document.getElementById("descricaoProblemas");
+                    if (!inputDesc || !inputDesc.value.trim()) {
+                        marcarErroInput(inputDesc);
+                    }
+                }
+
+                const inputRetirada = document.getElementById("retirada");
+                if (!inputRetirada || !inputRetirada.value.trim()) {
+                    marcarErroInput(inputRetirada);
+                }
+
+                const inputsDataAtivos = document.querySelectorAll("#ativos .data-ativo");
+                inputsDataAtivos.forEach(inputData => {
+                    if (!inputData.value.trim()) {
+                        marcarErroInput(inputData);
+                    }
+                });
+            } else {
+                const inputRetirada = document.getElementById("retirada");
+                if (inputRetirada) {
+                    inputRetirada.value = "";
+                    inputRetirada.classList.remove("campo-erro");
+                }
+                const usoEl = document.getElementById("uso");
+                if (usoEl) usoEl.checked = false;
+                const problemasEl = document.getElementById("problemas");
+                if (problemasEl) problemasEl.checked = false;
+                const descProb = document.getElementById("descricaoProblemas");
+                if (descProb) {
+                    descProb.value = "";
+                    descProb.classList.remove("campo-erro");
+                }
+                document.getElementById("uso")?.closest(".condicoes-linha")?.classList.remove("condicao-erro");
+                document.getElementById("problemas")?.closest(".condicoes-linha")?.classList.remove("condicao-erro");
+            }
+
+            // 2. VALIDAÇÃO DEVOLUÇÃO
+            if (temAtivosDevolucao) {
+                if (!usoDevolucao && !problemasDevolucao) {
+                    marcarErroCondicoes("usoDevolucao", "problemasDevolucao");
+                }
+
+                if (problemasDevolucao) {
+                    const inputDescDev = document.getElementById("descricaoProblemasDevolucao");
+                    if (!inputDescDev || !inputDescDev.value.trim()) {
+                        marcarErroInput(inputDescDev);
+                    }
+                }
+
+                const inputDataDevGeral = document.getElementById("dataDevolucaoGeral");
+                if (!inputDataDevGeral || !inputDataDevGeral.value.trim()) {
+                    marcarErroInput(inputDataDevGeral);
+                }
+
+                const inputsDataDev = document.querySelectorAll("#ativosDevolvidos .data-ativo");
+                inputsDataDev.forEach(inputData => {
+                    if (!inputData.value.trim()) {
+                        marcarErroInput(inputData);
+                    }
+                });
+            } else {
+                const inputDataDevGeral = document.getElementById("dataDevolucaoGeral");
+                if (inputDataDevGeral) {
+                    inputDataDevGeral.value = "";
+                    inputDataDevGeral.classList.remove("campo-erro");
+                }
+                const usoDevEl = document.getElementById("usoDevolucao");
+                if (usoDevEl) usoDevEl.checked = false;
+                const problemasDevEl = document.getElementById("problemasDevolucao");
+                if (problemasDevEl) problemasDevEl.checked = false;
+                const descProbDev = document.getElementById("descricaoProblemasDevolucao");
+                if (descProbDev) {
+                    descProbDev.value = "";
+                    descProbDev.classList.remove("campo-erro");
+                }
+                document.getElementById("usoDevolucao")?.closest(".condicoes-linha")?.classList.remove("condicao-erro");
+                document.getElementById("problemasDevolucao")?.closest(".condicoes-linha")?.classList.remove("condicao-erro");
+            }
+
+            if (temErro) {
+                if (primeiroElementoComErro) {
+                    primeiroElementoComErro.scrollIntoView({ behavior: "smooth", block: "center" });
+                    if (primeiroElementoComErro.focus) primeiroElementoComErro.focus();
+                }
+                return;
+            }
+
+            const obterVal = id => {
+                const el = document.getElementById(id);
+                return el ? el.value.trim() : "";
+            };
+
+            const nome = obterVal("nome");
+            const funcional = obterVal("funcional");
+            const area = obterVal("area");
+            const cargo = obterVal("cargo");
+            const localidade = obterVal("localidade");
+            const setor = obterVal("setor");
+            const cc = obterVal("cc");
+            
+            const retirada = temAtivosRetirada ? obterVal("retirada") : "";
+            const dataDevolucaoGeral = temAtivosDevolucao ? obterVal("dataDevolucaoGeral") : "";
+
+            const descricaoProblemas = obterVal("descricaoProblemas");
+            const descricaoProblemasDevolucao = obterVal("descricaoProblemasDevolucao");
+
+            // Data da Solicitação = dia em que o termo está sendo emitido (não muda com a data da retirada)
+            const dataSolicitacaoFormatada = formatarDataParaExibicao(obterDataHojeBrasilia());
+            const dataRetiradaFormatada = formatarDataParaExibicao(retirada);
+            const dataDevolucaoFormatada = formatarDataParaExibicao(dataDevolucaoGeral);
+
+            let html = `
+            <div class="a4">
+                <table class="tabela-mestra">
+                    <thead>
+                        <tr>
+                            <td>
+                                <div class="termo-header-logo">
+                                    ${CONFIG.logoUrl
+                                        ? `<img src="${CONFIG.logoUrl}" alt="${escaparHtml(CONFIG.empresa.nome)}" style="height: 52px; width: auto; display: inline-block;">`
+                                        : `<span style="font-size: 20px; font-weight: bold;">${escaparHtml(CONFIG.empresa.nome)}</span>`}
+                                </div>
+                                <div class="termo-titulo" style="position: relative; top: -14px;">
+                                    Termo de Guarda e Devolução de Ativos de Tecnologia
+                                </div>
+                                <div style="height: 14px;"></div>
+                            </td>
+                        </tr>
+                    </thead>
+
+                    <tfoot>
+                        <tr>
+                            <td style="height: 25px; border: none !important; padding: 0 !important;"></td>
+                        </tr>
+                    </tfoot>
+
+                    <tbody>
+                        <tr>
+                            <td>
+                                ${gerarPayloadOculto()}
+                                <div class="termo-secao" style="margin-top: 0; margin-bottom: 8px;">
+                                    Dados da Empresa / Colaborador / Ativo / Departamento
+                                </div>
+                                <table class="termo-tabela">
+                                    <tr>
+                                        <td style="width: 50%;">
+                                            Empresa<br>${escaparHtml(CONFIG.empresa.nome)}
+                                        </td>
+                                        <td style="width: 25%;">
+                                            CNPJ<br>${escaparHtml(CONFIG.empresa.cnpj)}
+                                        </td>
+                                        <td style="width: 25%;">
+                                            Data da Solicitação<br>${dataSolicitacaoFormatada}
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td style="width: 50%;">
+                                            Endereço<br>${escaparHtml(CONFIG.empresa.endereco)}
+                                        </td>
+                                        <td style="width: 25%;">
+                                            CEP<br>${escaparHtml(CONFIG.empresa.cep)}
+                                        </td>
+                                        <td style="width: 25%; padding: 0;">
+                                            <table style="width: 100%; border-collapse: collapse; margin: 0; border: none;">
+                                                <tr>
+                                                    <td style="width: 65%; border: none; border-right: 1px solid #000; padding: 4px 6px;">
+                                                        Cidade<br>${escaparHtml(CONFIG.empresa.cidade)}
+                                                    </td>
+                                                    <td style="width: 35%; border: none; padding: 4px 6px;">
+                                                        UF<br>${escaparHtml(CONFIG.empresa.uf)}
+                                                    </td>
+                                                </tr>
+                                            </table>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td style="width: 50%;">
+                                            Nome do Colaborador (Responsável pelo Ativo)<br>${escaparHtml(nome) || "&nbsp;"}
+                                        </td>
+                                        <td colspan="2" style="width: 50%;">
+                                            Funcional<br>${escaparHtml(funcional) || "&nbsp;"}
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td style="width: 50%;">
+                                            Área<br>${escaparHtml(area) || "&nbsp;"}
+                                        </td>
+                                        <td colspan="2" style="width: 50%;">
+                                            Cargo<br>${escaparHtml(cargo) || "&nbsp;"}
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td style="width: 50%;">
+                                            Localidade<br>${escaparHtml(localidade) || "&nbsp;"}
+                                        </td>
+                                        <td colspan="2" style="width: 50%;">
+                                            Setor<br>${escaparHtml(setor) || "&nbsp;"}
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td style="width: 50%;">
+                                            Centro de Custo<br>${escaparHtml(cc) || "&nbsp;"}
+                                        </td>
+                                        <td colspan="2" style="width: 50%;"></td>
+                                    </tr>
+                                </table>
+
+                                <div class="termo-secao" style="margin-top: 14px; margin-bottom: 8px;">
+                                    Dados do Patrimônio Colaborador / Departamental
+                                </div>
+                                <table class="termo-tabela">
+                                    <thead>
+                                        <tr>
+                                            <th style="width: 20%; text-align: left;">Tipo do Patrimônio</th>
+                                            <th style="width: 22%; text-align: left;">Nº Patrimônio/Série</th>
+                                            <th style="width: 38%; text-align: left;">Descrição Complementar do Patrimônio</th>
+                                            <th style="width: 16%; text-align: left;">Data de Entrega</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+            `;
+
+            const linhasAtivos = document.querySelectorAll("#ativos tr");
+            let totalLinhasAtivos = 0;
+
+            if (temAtivosRetirada) {
+                linhasAtivos.forEach(linha => {
+                    const tipoEl = linha.querySelector(".tipo-ativo");
+                    const tipo = tipoEl ? tipoEl.value : "LOCADO";
+
+                    const patEl = linha.querySelector(".patrimonio-ativo");
+                    const patrimonioHtml = formatarParaHtml(patEl ? patEl.value : "");
+
+                    const descEl = linha.querySelector(".descricao-ativo");
+                    const descricaoHtml = formatarParaHtml(descEl ? descEl.value : "");
+
+                    const dataEl = linha.querySelector(".data-ativo");
+                    const dataFormatada = formatarDataParaExibicao(dataEl ? dataEl.value : "");
+
+                    const tipoHtml = `
+                        <span class="termo-check">${tipo === "PROPRIO" ? "☒" : "☐"}</span> ${CONFIG.rotuloPatrimonioProprio}<br>
+                        <span class="termo-check">${tipo === "LOCADO" ? "☒" : "☐"}</span> LOCADO
+                    `;
+
+                    html += `
+                        <tr>
+                            <td style="line-height: 1.4; vertical-align: middle;">${tipoHtml}</td>
+                            <td style="vertical-align: middle;">${patrimonioHtml}</td>
+                            <td style="vertical-align: middle;">${descricaoHtml}</td>
+                            <td style="vertical-align: middle;">${dataFormatada}</td>
+                        </tr>
+                    `;
+                    totalLinhasAtivos++;
+                });
+            }
+
+            for (let i = totalLinhasAtivos; i < 5; i++) {
+                html += `
+                    <tr style="height: 38px;">
+                        <td style="line-height: 1.4; vertical-align: middle;">
+                            <span class="termo-check">☐</span> ${CONFIG.rotuloPatrimonioProprio}<br>
+                            <span class="termo-check">☐</span> LOCADO
+                        </td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                    </tr>
+                `;
+            }
+
+            const checkUsoRetirada = temAtivosRetirada && uso ? "☒" : "☐";
+            const checkProbRetirada = temAtivosRetirada && problemas ? "☒" : "☐";
+            const textoProbRetirada = temAtivosRetirada && problemas ? (escaparHtml(descricaoProblemas) || '&nbsp;') : '&nbsp;';
+
+            html += `
+                                    </tbody>
+                                </table>
+
+                                <div class="termo-secao-condicoes">
+                                    Retirada - Condições de Uso na Retirada
+                                </div>
+                                <div class="termo-condicoes">
+                                    <p style="text-align: left;">
+                                        <span class="termo-check">${checkUsoRetirada}</span> Em perfeitas condições de uso
+                                    </p>
+                                    <div style="display: flex; align-items: flex-end; gap: 8px; margin: 4px 0;">
+                                        <span style="white-space: nowrap;"><span class="termo-check">${checkProbRetirada}</span> Com os seguintes problemas:</span>
+                                        <span style="flex: 1; border-bottom: 1px solid #000; min-height: 15px; padding-left: 4px; font-weight: normal;">${textoProbRetirada}</span>
+                                    </div>
+                                    <p style="text-align: justify;">
+                                        <span class="termo-check">☒</span> Estou ciente e de acordo que, em caso de perda ou dano ao equipamento por má utilização constatada, o valor de reposição ou reparo do ativo será direcionado ao centro de custo da área estabelecida neste documento. Em caso de roubo/furto/quebra, estou ciente que o procedimento para reposição é abertura de um Boletim de Ocorrência e um chamado para registro do Boletim e solicitação de novo equipamento.
+                                    </p>
+                                    <p style="text-align: justify;">
+                                        <span class="termo-check">☒</span> Em caso de necessidade de mudança de local de qualquer equipamento, estou ciente que é necessário abertura de chamado contendo os dados da máquina e do novo departamento. Também estou ciente que o remanejamento de equipamento terá um fluxo de aprovação.
+                                    </p>
+                                    <p style="text-align: justify;">
+                                        <span class="termo-check">☒</span> Em caso de devolução de equipamento, entrar em contato com a equipe responsável: ${escaparHtml(CONFIG.contatoDevolucao)}
+                                    </p>
+                                </div>
+
+                                <table class="termo-tabela" style="margin-top: 8px; border-bottom: 1px solid #000;">
+                                    <tr style="height: 45px;">
+                                        <td style="width: 14%; font-size: 11px; white-space: nowrap; line-height: 1.1; padding: 2px 5px;">
+                                            Data da Retirada<br>
+                                            <span style="display: block; height: 16px;"></span>
+                                            <span style="font-size: 10.5px;">${dataRetiradaFormatada}</span>
+                                        </td>
+                                        <td style="width: 46%; font-size: 11px; padding: 0; vertical-align: top; height: 45px;">
+                                            <div style="position: relative; width: 100%; height: 45px; padding: 2px 5px; box-sizing: border-box;">
+                                                <div style="font-size: 10.5px; white-space: nowrap; color: #000; line-height: 1.1;">
+                                                    Assinatura Eletrônica do Colaborador
+                                                </div>
+                                                <div id="assinaturaColabP1" style="position: absolute; left: 4px; right: 4px; top: 12px; bottom: 1px; display: flex; align-items: center; justify-content: center; pointer-events: none;">
+                                                    ${assinaturaRetiradaBase64 ? `<img src="${assinaturaRetiradaBase64}" style="max-height: 100%; max-width: 98%; width: auto; object-fit: contain;">` : ''}
+                                                </div>
+                                            </div>
+                                        </td>
+                                        <td style="width: 40%; font-size: 11px; white-space: nowrap; padding: 3px 5px;">
+                                            Assinatura Eletrônica do Responsável pela Entrega
+                                        </td>
+                                    </tr>
+                                </table>
+
+                                <div style="break-inside: avoid !important; page-break-inside: avoid !important; margin-top: 18px;">
+                                    <div class="termo-secao" style="margin-top: 0; margin-bottom: 8px;">
+                                        Devolução – Itens Devolvidos
+                                    </div>
+                                    <table class="termo-tabela">
+                                        <thead>
+                                            <tr>
+                                                <th style="width: 19%; text-align: left;">Tipo De Patrimônio</th>
+                                                <th style="width: 27%; text-align: left;">Nº Patrimônio/Série</th>
+                                                <th style="width: 36%; text-align: left;">Descrição Complementar do Patrimônio</th>
+                                                <th style="width: 18%; text-align: left; white-space: nowrap;">Data de Devolução</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+            `;
+
+            const linhasDevolvidas = document.querySelectorAll("#ativosDevolvidos tr");
+            let totalLinhasDev = 0;
+
+            if (temAtivosDevolucao) {
+                linhasDevolvidas.forEach(linha => {
+                    const tipoEl = linha.querySelector(".tipo-ativo");
+                    const tipo = tipoEl ? tipoEl.value : "LOCADO";
+
+                    const patEl = linha.querySelector(".patrimonio-ativo");
+                    const patrimonioHtml = formatarParaHtml(patEl ? patEl.value : "");
+
+                    const descEl = linha.querySelector(".descricao-ativo");
+                    const descricaoHtml = formatarParaHtml(descEl ? descEl.value : "");
+
+                    const dataEl = linha.querySelector(".data-ativo");
+                    const dataDevolucaoFormatadaItem = formatarDataParaExibicao(dataEl ? dataEl.value : "");
+
+                    const tipoHtml = `
+                        <span class="termo-check">${tipo === "PROPRIO" ? "☒" : "☐"}</span> ${CONFIG.rotuloPatrimonioProprio}<br>
+                        <span class="termo-check">${tipo === "LOCADO" ? "☒" : "☐"}</span> LOCADO
+                    `;
+
+                    html += `
+                        <tr>
+                            <td style="line-height: 1.4; vertical-align: middle;">${tipoHtml}</td>
+                            <td style="vertical-align: middle;">${patrimonioHtml}</td>
+                            <td style="vertical-align: middle;">${descricaoHtml}</td>
+                            <td style="vertical-align: middle;">${dataDevolucaoFormatadaItem}</td>
+                        </tr>
+                    `;
+                    totalLinhasDev++;
+                });
+            }
+
+            for (let i = totalLinhasDev; i < 5; i++) {
+                html += `
+                    <tr style="height: 38px;">
+                        <td style="line-height: 1.4; vertical-align: middle;">
+                            <span class="termo-check">☐</span> ${CONFIG.rotuloPatrimonioProprio}<br>
+                            <span class="termo-check">☐</span> LOCADO
+                        </td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                    </tr>
+                `;
+            }
+
+            const checkUsoDev = temAtivosDevolucao && usoDevolucao ? "☒" : "☐";
+            const checkProbDev = temAtivosDevolucao && problemasDevolucao ? "☒" : "☐";
+            const textoProbDev = temAtivosDevolucao && problemasDevolucao ? (escaparHtml(descricaoProblemasDevolucao) || '&nbsp;') : '&nbsp;';
+
+            html += `
+                                        </tbody>
+                                    </table>
+                                </div>
+
+                                <div class="termo-secao-condicoes">
+                                    Devolução - Condições de Uso na Devolução
+                                </div>
+                                <div class="termo-condicoes">
+                                    <p style="text-align: left;">
+                                        <span class="termo-check">${checkUsoDev}</span> Em perfeitas condições de uso
+                                    </p>
+                                    <div style="display: flex; align-items: flex-end; gap: 8px; margin: 4px 0;">
+                                        <span style="white-space: nowrap;"><span class="termo-check">${checkProbDev}</span> Com os seguintes problemas:</span>
+                                        <span style="flex: 1; border-bottom: 1px solid #000; min-height: 15px; padding-left: 4px; font-weight: normal;">${textoProbDev}</span>
+                                    </div>
+                                    <p style="text-align: justify;">
+                                        <span class="termo-check">☒</span> Estou ciente e de acordo que, em caso de perda ou dano ao equipamento por má utilização constatada, o valor de reposição ou reparo do ativo será direcionado ao centro de custo da área estabelecida neste documento. Em caso de roubo/furto/quebra, estou ciente que o procedimento para reposição é abertura de um Boletim de Ocorrência e um chamado para registro do Boletim e solicitação de novo equipamento.
+                                    </p>
+                                </div>
+
+                                <table class="termo-tabela" style="margin-top: 8px; border-bottom: 1px solid #000;">
+                                    <tr style="height: 45px;">
+                                        <td style="width: 14%; font-size: 11px; white-space: nowrap; line-height: 1.1; padding: 2px 5px;">
+                                            Data da Devolução<br>
+                                            <span style="display: block; height: 16px;"></span>
+                                            <span style="font-size: 10.5px;">${dataDevolucaoFormatada}</span>
+                                        </td>
+                                        <td style="width: 46%; font-size: 11px; padding: 0; vertical-align: top; height: 45px;">
+                                            <div style="position: relative; width: 100%; height: 45px; padding: 2px 5px; box-sizing: border-box;">
+                                                <div style="font-size: 10.5px; white-space: nowrap; color: #000; line-height: 1.1;">
+                                                    Assinatura Eletrônica do Colaborador
+                                                </div>
+                                                <div id="assinaturaColabP2" style="position: absolute; left: 4px; right: 4px; top: 12px; bottom: 1px; display: flex; align-items: center; justify-content: center; pointer-events: none;">
+                                                    ${assinaturaDevolucaoBase64 ? `<img src="${assinaturaDevolucaoBase64}" style="max-height: 100%; max-width: 98%; width: auto; object-fit: contain;">` : ''}
+                                                </div>
+                                            </div>
+                                        </td>
+                                        <td style="width: 40%; font-size: 11px; white-space: nowrap; padding: 3px 5px;">
+                                            Assinatura Eletrônica do Responsável pelo recebimento
+                                        </td>
+                                    </tr>
+                                </table>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+
+                <div class="termo-rodape-info">
+                    <span>${escaparHtml(CONFIG.codigoFormulario)}</span>
+                </div>
+            </div>
+            `;
+
+            document.getElementById("previewConteudo").innerHTML = html;
+            document.getElementById("formulario").classList.add("hidden");
+            document.getElementById("previewArea").classList.remove("hidden");
+            
+            definirNomeArquivoTermo();
+            window.scrollTo({ top: 0, behavior: "smooth" });
+            
+        } catch (e) {
+            console.error("Erro ao gerar preview:", e);
+            alert("Ocorreu um erro ao gerar o documento: " + e.message);
+        }
+    }
+
+    // O Chrome nomeia o PDF pelo título da janela de nível superior. Dentro do Apps Script o termo
+    // fica num quadro (iframe) e o título dele é ignorado; por isso a impressão é feita numa janela
+    // própria, cujo título é "Funcional - Nome".
+    function baixarPDF() {
+        const titulo = nomeArquivoTermo();
+        const conteudo = document.getElementById("previewConteudo");
+        if (!conteudo) { window.print(); return; }
+
+        const estilos = Array.from(document.querySelectorAll("style")).map(s => s.textContent).join("\n");
+        const w = window.open("", "_blank");
+        if (!w) {
+            // popup bloqueado: imprime aqui mesmo (o nome sugerido será "SETAG")
+            mostrarAlerta("Janela bloqueada", "Permita pop-ups para este site para que o PDF saia com o nome \"" + titulo + "\". Imprimindo com o nome padrão.")
+                .then(() => { definirNomeArquivoTermo(); window.print(); });
+            return;
+        }
+
+        w.document.open();
+        w.document.write(
+            '<!DOCTYPE html><html lang="pt-BR"><head><meta charset="UTF-8"><title></title>' +
+            '<style>' + estilos + '</style></head><body><div class="container">' +
+            conteudo.innerHTML + '</div></body></html>'
+        );
+        w.document.close();
+        w.document.title = titulo;
+
+        // ícone da aba (adicionado depois do carregamento; o print só começa quando ele carregar)
+        const ICONE_URL = CONFIG.iconeUrl;
+        let iconePronto = false;
+        try {
+            const lk = w.document.createElement("link");
+            lk.rel = "icon"; lk.type = "image/png"; lk.href = ICONE_URL;
+            w.document.head.appendChild(lk);
+            const im = new w.Image();
+            im.onload = im.onerror = () => { iconePronto = true; };
+            im.src = ICONE_URL;
+        } catch (e) { iconePronto = true; }
+
+        const imprimir = () => {
+            if (w.__impresso) return;
+            w.__impresso = true;
+            w.document.title = titulo;
+            w.focus();
+            w.print();
+        };
+        // espera as imagens (logo e assinaturas) carregarem antes de imprimir
+        const esperarIcone = (fn) => { let n = 0; const t = setInterval(() => { if (iconePronto || ++n > 15) { clearInterval(t); fn(); } }, 100); };
+        const imprimirAposIcone = () => esperarIcone(imprimir);
+        const imgs = Array.from(w.document.images);
+        let pendentes = imgs.filter(i => !i.complete).length;
+        if (!pendentes) { setTimeout(imprimirAposIcone, 150); }
+        else {
+            imgs.forEach(i => { if (!i.complete) { const f = () => { if (--pendentes <= 0) setTimeout(imprimirAposIcone, 150); }; i.onload = f; i.onerror = f; } });
+            setTimeout(imprimirAposIcone, 4000); // segurança
+        }
+    }
+
+    function voltar() {
+        document.title = "SETAG";
+        document.getElementById("previewArea").classList.add("hidden");
+        document.getElementById("formulario").classList.remove("hidden");
+        window.scrollTo({ top: 0, behavior: "smooth" });
+    }
+
+    function buscarTermosNoDrive() {
+        const input = document.getElementById("termoBuscaDrive");
+        const termo = input ? input.value.trim() : "";
+        const container = document.getElementById("listaResultadosDrive");
+        const status = document.getElementById("statusImportacao");
+
+        if (!termo) {
+            mostrarAlerta("Atenção", "Digite um nome ou matrícula para pesquisar.");
+            return;
+        }
+
+        status.innerText = "Pesquisando termos no Google Drive...";
+        container.style.display = "block";
+        container.innerHTML = '<div style="padding: 10px; font-size: 12px; color: #666;">Buscando...</div>';
+
+        google.script.run
+            .withSuccessHandler((resposta) => {
+                if (!resposta.sucesso) {
+                    status.innerText = "Erro ao buscar: " + resposta.erro;
+                    container.innerHTML = `<div style="padding: 10px; color: #dc3545; font-size: 12px;">Erro: ${escaparHtml(resposta.erro)}</div>`;
+                    return;
+                }
+
+                if (resposta.arquivos.length === 0) {
+                    status.innerText = "";
+                    container.innerHTML = '<div style="padding: 10px; font-size: 12px; color: #666;">Nenhum termo encontrado com esse nome/número.</div>';
+                    return;
+                }
+
+                status.innerText = `Foram encontrados ${resposta.arquivos.length} termo(s).`;
+                let listaHtml = '<table style="margin: 0; border: none; width: 100%;">';
+                
+                resposta.arquivos.forEach((arq) => {
+                    const pastaStr = arq.pasta ? `<span style="font-size: 11px; color: #0f766e; font-weight: bold;">📁 ${escaparHtml(arq.pasta)}</span><br>` : '';
+                    listaHtml += `
+                        <tr style="border-bottom: 1px solid #f1f5f9;">
+                            <td style="padding: 8px 10px; font-size: 12px;">
+                                ${pastaStr}
+                                <strong>${escaparHtml(arq.nome)}</strong><br>
+                                <span style="font-size: 10.5px; color: #64748b;">Modificado em: ${escaparHtml(arq.data)}</span>
+                            </td>
+                            <td style="padding: 8px 10px; text-align: right; width: 110px;">
+                                <button type="button" class="btn-solid-primary" style="padding: 4px 10px; font-size: 11px;" onclick="carregarPdfDiretoDoDrive('${escaparHtml(arq.id)}')">
+                                    Importar
+                                </button>
+                            </td>
+                        </tr>
+                    `;
+                });
+
+                listaHtml += '</table>';
+                container.innerHTML = listaHtml;
+            })
+            .withFailureHandler((erro) => {
+                status.innerText = "Erro na comunicação com o Drive.";
+                container.innerHTML = `<div style="padding: 10px; color: #dc3545; font-size: 12px;">Falha: ${escaparHtml(erro)}</div>`;
+            })
+            .pesquisarTermosDrive(termo);
+    }
+
+    // ========================================================
+    // GESTÃO DA ASSINATURA ELETRÓNICA (MOBILE & DESKTOP)
+    // ========================================================
+    let assinaturaRetiradaBase64 = "";
+    let assinaturaDevolucaoBase64 = "";
+    let desenhando = false;
+    let canvasIniciado = false;
+
+    function inicializarCanvas() {
+        const canvas = document.getElementById("canvasAssinatura");
+        if (!canvas) return;
+        const ctx = canvas.getContext("2d");
+
+        // Espessura do traço mantida em 9 conforme solicitado
+        ctx.lineWidth = 9;
+        ctx.lineCap = "round";
+        ctx.lineJoin = "round";
+        ctx.strokeStyle = "#000000";
+
+        const obterPosicao = (e) => {
+            const rect = canvas.getBoundingClientRect();
+            let clienteX = e.clientX;
+            let clienteY = e.clientY;
+
+            if (e.touches && e.touches.length > 0) {
+                clienteX = e.touches[0].clientX;
+                clienteY = e.touches[0].clientY;
+            } else if (e.changedTouches && e.changedTouches.length > 0) {
+                clienteX = e.changedTouches[0].clientX;
+                clienteY = e.changedTouches[0].clientY;
+            }
+
+            return {
+                x: (clienteX - rect.left) * (canvas.width / rect.width),
+                y: (clienteY - rect.top) * (canvas.height / rect.height)
+            };
+        };
+
+        const iniciarDesenho = (e) => {
+            desenhando = true;
+            if (e.pointerId && canvas.setPointerCapture) {
+                try { canvas.setPointerCapture(e.pointerId); } catch(err) {}
+            }
+            const pos = obterPosicao(e);
+            ctx.beginPath();
+            ctx.moveTo(pos.x, pos.y);
+            ctx.lineTo(pos.x, pos.y);
+            ctx.stroke();
+            if (e.cancelable) e.preventDefault();
+        };
+
+        const moverDesenho = (e) => {
+            if (!desenhando) return;
+            const pos = obterPosicao(e);
+            ctx.lineTo(pos.x, pos.y);
+            ctx.stroke();
+            if (e.cancelable) e.preventDefault();
+        };
+
+        const pararDesenho = (e) => {
+            if (!desenhando) return;
+            desenhando = false;
+            if (e && e.pointerId && canvas.releasePointerCapture) {
+                try { canvas.releasePointerCapture(e.pointerId); } catch(err) {}
+            }
+        };
+
+        canvas.addEventListener("pointerdown", iniciarDesenho, { passive: false });
+        canvas.addEventListener("pointermove", moverDesenho, { passive: false });
+        canvas.addEventListener("pointerup", pararDesenho, { passive: false });
+        canvas.addEventListener("pointercancel", pararDesenho, { passive: false });
+        canvas.addEventListener("pointerleave", pararDesenho, { passive: false });
+
+        canvas.addEventListener("touchstart", iniciarDesenho, { passive: false });
+        canvas.addEventListener("touchmove", moverDesenho, { passive: false });
+        canvas.addEventListener("touchend", pararDesenho, { passive: false });
+        canvas.addEventListener("touchcancel", pararDesenho, { passive: false });
+
+        canvasIniciado = true;
+    }
+
+    function abrirModalAssinatura() {
+        const modal = document.getElementById("modalAssinatura");
+        if (modal) modal.classList.remove("hidden");
+
+        const checkRet = document.getElementById("checkAssinarRetirada");
+        const checkDev = document.getElementById("checkAssinarDevolucao");
+        const boxDestino = document.getElementById("boxSelecaoDestinoAssinatura");
+
+        if (checkRet) checkRet.checked = false;
+        if (checkDev) checkDev.checked = false;
+
+        if (boxDestino) boxDestino.classList.remove("condicao-erro");
+
+        if (!canvasIniciado) {
+            inicializarCanvas();
+            
+            checkRet?.addEventListener("change", () => {
+                if (checkRet.checked || checkDev?.checked) boxDestino?.classList.remove("condicao-erro");
+            });
+            checkDev?.addEventListener("change", () => {
+                if (checkDev.checked || checkRet?.checked) boxDestino?.classList.remove("condicao-erro");
+            });
+        }
+        
+        limparCanvasAssinatura();
+    }
+
+    function fecharModalAssinatura() {
+        const modal = document.getElementById("modalAssinatura");
+        if (modal) modal.classList.add("hidden");
+    }
+
+    function limparCanvasAssinatura() {
+        const canvas = document.getElementById("canvasAssinatura");
+        if (!canvas) return;
+        const ctx = canvas.getContext("2d");
+        ctx.clearRect(0, 0, canvas.width, canvas.height);
+    }
+
+    function isCanvasEmBranco(canvas) {
+        const ctx = canvas.getContext("2d");
+        const pixelBuffer = new Uint32Array(
+            ctx.getImageData(0, 0, canvas.width, canvas.height).data.buffer
+        );
+        return !pixelBuffer.some(color => color !== 0);
+    }
+
+    async function confirmarAssinatura() {
+        const checkRet = document.getElementById("checkAssinarRetirada")?.checked;
+        const checkDev = document.getElementById("checkAssinarDevolucao")?.checked;
+        const boxDestino = document.getElementById("boxSelecaoDestinoAssinatura");
+
+        if (!checkRet && !checkDev) {
+            if (boxDestino) boxDestino.classList.add("condicao-erro");
+            await mostrarAlerta("Atenção", "Selecione ao menos um local para aplicar a assinatura (Retirada ou Devolução).");
+            return;
+        }
+
+        const canvas = document.getElementById("canvasAssinatura");
+        if (!canvas || isCanvasEmBranco(canvas)) {
+            await mostrarAlerta("Atenção", "Por favor, desenhe sua assinatura antes de confirmar.");
+            return;
+        }
+
+        const assinaturaBase64 = recortarAssinaturaSemBordas(canvas);
+        const imgTag = `<img src="${assinaturaBase64}" style="max-height: 100%; max-width: 98%; width: auto; object-fit: contain;">`;
+
+        if (checkRet) {
+            assinaturaRetiradaBase64 = assinaturaBase64;
+            const containerP1 = document.getElementById("assinaturaColabP1");
+            if (containerP1) containerP1.innerHTML = imgTag;
+        }
+
+        if (checkDev) {
+            assinaturaDevolucaoBase64 = assinaturaBase64;
+            const containerP2 = document.getElementById("assinaturaColabP2");
+            if (containerP2) containerP2.innerHTML = imgTag;
+        }
+
+        fecharModalAssinatura();
+        await mostrarAlerta("Sucesso", "Assinatura registrada com sucesso no termo!");
+    }
+
+    function recortarAssinaturaSemBordas(canvas) {
+        const ctx = canvas.getContext("2d");
+        const w = canvas.width;
+        const h = canvas.height;
+        const imgData = ctx.getImageData(0, 0, w, h);
+        const data = imgData.data;
+
+        let minX = w, minY = h, maxX = 0, maxY = 0;
+        let desenhouAlgo = false;
+
+        for (let y = 0; y < h; y++) {
+            for (let x = 0; x < w; x++) {
+                const alpha = data[(y * w + x) * 4 + 3];
+                if (alpha > 0) {
+                    if (x < minX) minX = x;
+                    if (x > maxX) maxX = x;
+                    if (y < minY) minY = y;
+                    if (y > maxY) maxY = y;
+                    desenhouAlgo = true;
+                }
+            }
+        }
+
+        if (!desenhouAlgo) return canvas.toDataURL("image/png");
+
+        const padding = 4;
+        minX = Math.max(0, minX - padding);
+        minY = Math.max(0, minY - padding);
+        maxX = Math.min(w, maxX + padding);
+        maxY = Math.min(h, maxY + padding);
+
+        const corteW = maxX - minX;
+        const corteH = maxY - minY;
+
+        const canvasCortado = document.createElement("canvas");
+        canvasCortado.width = corteW;
+        canvasCortado.height = corteH;
+
+        const ctxCortado = canvasCortado.getContext("2d");
+        ctxCortado.drawImage(canvas, minX, minY, corteW, corteH, 0, 0, corteW, corteH);
+
+        return canvasCortado.toDataURL("image/png");
+    }
+
+</script>
+
+</body>
+</html>

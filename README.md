@@ -1,5 +1,5 @@
 <p align="center">
-  <img src="assets/icone.png" alt="Ícone do SETAG" width="96">
+  <img src="docs/icone.png" alt="Ícone do SETAG" width="96">
 </p>
 
 <h1 align="center">SETAG</h1>
@@ -52,9 +52,7 @@ setag/
 ├── src/
 │   ├── Code.gs       # back-end (Apps Script)
 │   └── Index.html    # interface e lógica do termo
-├── assets/
-│   └── icone.png
-└── docs/             # imagens do README
+└── docs/             # ícone e imagens do README
 ```
 
 ## 🚀 Como usar
@@ -82,7 +80,7 @@ const CONFIG = {
     rotuloPatrimonioProprio: "EMPRESA",  // o outro tipo de patrimônio é LOCADO
     contatoDevolucao: "(00) 00000-0000",
     codigoFormulario: "FR-0000-R00",
-    iconeUrl: "https://raw.githubusercontent.com/dehsouzasou/setag/main/assets/icone.png"
+    iconeUrl: "https://raw.githubusercontent.com/dehsouzasou/setag/main/docs/icone.png"
 };
 ```
 
